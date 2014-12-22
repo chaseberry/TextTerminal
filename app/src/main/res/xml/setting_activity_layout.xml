@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:title="Security Code"
+        android:key="preference_pin" />
+    <Preference android:title="@string/whitelist_string">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="chase.csh.edu.textterminal.Activities.PhoneListActivity"
+            android:targetPackage="chase.csh.edu.textterminal">
+            <extra
+                android:name="PHONE_LIST_TYPE"
+                android:value="White List" />
+        </intent>
+    </Preference>
+    <Preference android:title="@string/blacklist_string">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="chase.csh.edu.textterminal.Activities.PhoneListActivity"
+            android:targetPackage="chase.csh.edu.textterminal">
+            <extra
+                android:name="PHONE_LIST_TYPE"
+                android:value="Black List" />
+        </intent>
+    </Preference>
+    <CheckBoxPreference android:title="Logging" />
+    <Preference
+        android:title="Enable Device Administrative Features"
+        android:key="preference_admin_features" />
+
+</PreferenceScreen>

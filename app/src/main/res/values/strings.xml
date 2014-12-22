@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Text Terminal</string>
+    <string name="enabled_string">Enabled</string>
+    <string name="disabled_string">Disabled</string>
+
+
+    <string name="phone_list_type">PHONE_LIST_TYPE</string>
+    <string name="blacklist_string">Black List</string>
+    <string name="whitelist_string">White List</string>
+
+</resources>

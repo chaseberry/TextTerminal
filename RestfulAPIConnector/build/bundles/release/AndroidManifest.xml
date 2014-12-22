@@ -1,0 +1,7 @@
+<!-- From: file:/Users/chase/Code/bryx911-android/Bryx911Project/RestfulAPIConnector/src/main/AndroidManifest.xml -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="edu.csh.chase.RestfulAPIConnector">
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19"/>
+
+    <application android:allowBackup="true"/>
+
+</manifest>
