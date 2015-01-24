@@ -2,6 +2,8 @@ package chase.csh.edu.textterminal.Activities;
 
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ListView;
 
 import java.io.IOException;
@@ -22,7 +24,6 @@ public class MainActivity extends TextTerminalActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setDisplayHomeAsUpEnabled(false);
         SharedPrefManager.loadSharedPrefs(this);
         setContentView(R.layout.main_activity_layout);
         ArrayList<String> classNames = new ArrayList<>();
@@ -50,6 +51,14 @@ public class MainActivity extends TextTerminalActivity {
             SharedPrefManager.saveBoolean(FIRSTRUN, false);
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_bar_menu, menu);
+        getActionBar().setDisplayHomeAsUpEnabled(false);
+        return true;
     }
 
 }
