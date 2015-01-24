@@ -1,4 +1,4 @@
-package chase.csh.edu.textterminal;
+package chase.csh.edu.textterminal.Managers;
 
 import android.content.Context;
 import android.content.SharedPreferences;

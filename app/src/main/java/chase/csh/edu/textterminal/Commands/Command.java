@@ -9,9 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import chase.csh.edu.textterminal.SharedPrefManager;
+import chase.csh.edu.textterminal.Managers.SharedPrefManager;
 import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONObjectWrapper;
-import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
 
 public abstract class Command {
 
@@ -87,6 +86,7 @@ public abstract class Command {
     protected void sendMessage(String message, String to) {
         SmsManager sms = SmsManager.getDefault();
         sms.sendMultipartTextMessage(to, null, sms.divideMessage(message), null, null);
+        //Log attempted to send message in response - ToNum
     }
 
     public String getName() {

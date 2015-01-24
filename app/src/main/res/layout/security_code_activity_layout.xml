@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="If set this security code must be sent before any command. The format is 'code command' followed by any flags or parameters."
+        android:text="If set, you must prepend the security code to every command."
         android:textSize="24sp" />
 
     <LinearLayout
@@ -22,14 +22,16 @@
         android:orientation="vertical">
 
         <EditText
-            style="@style/security_code_text_field"
+            style="@style/flat_text_field"
             android:hint="New Security Code"
-            android:id="@+id/security_code_activity_code_new" />
+            android:id="@+id/security_code_activity_code_new"
+            android:inputType="textPassword" />
 
         <EditText
-            style="@style/security_code_text_field"
+            style="@style/flat_text_field"
             android:hint="Confirm Security Code"
-            android:id="@+id/security_code_activity_code_confirm" />
+            android:id="@+id/security_code_activity_code_confirm"
+            android:inputType="textPassword" />
 
         <RelativeLayout
             android:layout_width="match_parent"

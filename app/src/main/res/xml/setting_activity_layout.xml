@@ -5,7 +5,9 @@
     <Preference
         android:title="Security Code"
         android:key="preference_pin" />
-    <Preference android:title="@string/whitelist_string">
+    <Preference
+        android:title="@string/whitelist_string"
+        android:key="White List">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetClass="chase.csh.edu.textterminal.Activities.PhoneListActivity"
@@ -15,7 +17,9 @@
                 android:value="White List" />
         </intent>
     </Preference>
-    <Preference android:title="@string/blacklist_string">
+    <Preference
+        android:title="@string/blacklist_string"
+        android:key="Black List">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetClass="chase.csh.edu.textterminal.Activities.PhoneListActivity"
@@ -25,7 +29,9 @@
                 android:value="Black List" />
         </intent>
     </Preference>
-    <CheckBoxPreference android:title="Logging" />
+    <CheckBoxPreference
+        android:title="Logging"
+        android:key="logging" />
     <Preference
         android:title="Enable Device Administrative Features"
         android:key="preference_admin_features" />

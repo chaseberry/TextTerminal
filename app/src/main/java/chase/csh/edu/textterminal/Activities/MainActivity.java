@@ -10,9 +10,9 @@ import java.util.Collections;
 import java.util.Enumeration;
 
 import chase.csh.edu.textterminal.Functions;
-import chase.csh.edu.textterminal.MainActivityListLoader;
+import chase.csh.edu.textterminal.Adapters.MainActivityListLoader;
 import chase.csh.edu.textterminal.R;
-import chase.csh.edu.textterminal.SharedPrefManager;
+import chase.csh.edu.textterminal.Managers.SharedPrefManager;
 import dalvik.system.DexFile;
 
 public class MainActivity extends TextTerminalActivity {
@@ -22,8 +22,8 @@ public class MainActivity extends TextTerminalActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPrefManager.loadSharedPrefs(this);
         getActionBar().setDisplayHomeAsUpEnabled(false);
+        SharedPrefManager.loadSharedPrefs(this);
         setContentView(R.layout.main_activity_layout);
         ArrayList<String> classNames = new ArrayList<>();
         //new Lookup(this, new String[]{"Lookup", "Mike Keegan"}, "5188361344").execute();

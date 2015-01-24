@@ -35,6 +35,19 @@
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="DATABASE"
+            android:value="log.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="chase.csh.edu.textterminal" />
+
         <activity
             android:name=".Activities.MainActivity"
             android:label="Text Terminal">

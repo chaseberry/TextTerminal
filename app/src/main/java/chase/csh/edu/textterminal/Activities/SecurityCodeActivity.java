@@ -6,11 +6,10 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import chase.csh.edu.textterminal.Activities.TextTerminalActivity;
 import chase.csh.edu.textterminal.Commands.Command;
 import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
-import chase.csh.edu.textterminal.SharedPrefManager;
+import chase.csh.edu.textterminal.Managers.SharedPrefManager;
 
 /**
  * Created by chase on 12/3/14.

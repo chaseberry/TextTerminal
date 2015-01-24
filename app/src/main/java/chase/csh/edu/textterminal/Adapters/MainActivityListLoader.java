@@ -1,4 +1,4 @@
-package chase.csh.edu.textterminal;
+package chase.csh.edu.textterminal.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +15,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
 import chase.csh.edu.textterminal.Commands.Command;
+import chase.csh.edu.textterminal.R;
 import chase.csh.edu.textterminal.Receivers.SmsReceiver;
 
 

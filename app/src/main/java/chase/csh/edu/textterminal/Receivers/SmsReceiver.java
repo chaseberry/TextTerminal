@@ -10,7 +10,9 @@ import java.lang.reflect.Constructor;
 
 import chase.csh.edu.textterminal.Commands.Command;
 import chase.csh.edu.textterminal.Functions;
-import chase.csh.edu.textterminal.SharedPrefManager;
+import chase.csh.edu.textterminal.Managers.BlackListManager;
+import chase.csh.edu.textterminal.Managers.SharedPrefManager;
+import chase.csh.edu.textterminal.Managers.WhiteListManager;
 
 
 public class SmsReceiver extends BroadcastReceiver {
@@ -35,11 +37,23 @@ public class SmsReceiver extends BroadcastReceiver {
 
                         //Parse message
 
+                        WhiteListManager whiteList = new WhiteListManager();//Create a reference to the whiteList
+
+                        BlackListManager blackList = new BlackListManager();//create a reference to the blackList
+
+                        if (whiteList.size() > 0 && !whiteList.contains(phoneNumber)) {
+                            continue;
+                        }
+
+                        if (blackList.contains(phoneNumber)) {
+                            continue;
+                        }
+
                         String[] bodyParts = message.split(" ");
                         String code = SharedPrefManager.loadString(Command.SECURITYCODEKEY, "");
                         if (!code.equals("")) {
                             if (!Functions.checkPassword(code, bodyParts[0])) {
-                                //TODO log failed -- security code
+                                //Security-code failed.. May be invalid, may be text, unsure, no way to know
                                 return;
                             }
                             message = message.substring(message.indexOf(' ') + 1);
@@ -47,7 +61,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         bodyParts = message.split(" ");
                         String comm = bodyParts[0];
                         if (null == comm || comm.isEmpty()) {
-                            //TODO log failed -- no command
+                            //No way to know what happens
                             break;
                         }
                         //Parse message
@@ -60,12 +74,10 @@ public class SmsReceiver extends BroadcastReceiver {
                         Constructor c = commandClass.getDeclaredConstructor(Context.class, String[].class, String.class);
                         c.setAccessible(true);
                         Command command = (Command) c.newInstance(context, bodyParts, phoneNumber);
-                        command.execute();//TODO -- log the value of this
-
+                        //Log - command found - executing - fromNum
+                        command.execute();//TODO -- log the value of this -- fromNum
                     } catch (Exception e) {
                         e.printStackTrace();
-                        System.out.println("Command not found");
-                        //Log that shit bro TODO
                     }
                 } // end for loop
             } // bundle is null

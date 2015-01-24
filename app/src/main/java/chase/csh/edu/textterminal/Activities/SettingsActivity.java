@@ -10,8 +10,9 @@ import android.view.MenuItem;
 
 import chase.csh.edu.textterminal.Commands.Command;
 import chase.csh.edu.textterminal.Functions;
+import chase.csh.edu.textterminal.Managers.PhoneListManager;
 import chase.csh.edu.textterminal.R;
-import chase.csh.edu.textterminal.SharedPrefManager;
+import chase.csh.edu.textterminal.Managers.SharedPrefManager;
 
 
 public class SettingsActivity extends PreferenceActivity {
@@ -55,9 +56,7 @@ public class SettingsActivity extends PreferenceActivity {
 
         Preference deviceAdminPref = findPreference("preference_admin_features");
         if (deviceAdminPref != null) {
-            if (Functions.isAdmin(SettingsActivity.this)) {
-                deviceAdminPref.setEnabled(false);
-            } else {
+            if (!Functions.isAdmin(SettingsActivity.this)) {
                 deviceAdminPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                     @Override
                     public boolean onPreferenceClick(Preference preference) {
@@ -80,7 +79,16 @@ public class SettingsActivity extends PreferenceActivity {
                     ((SharedPrefManager.loadString(Command.SECURITYCODEKEY, "").length() > 0)
                             ? R.string.enabled_string : R.string.disabled_string));
         }
-        
+        Preference whiteListPref = findPreference("White List");
+        if (whiteListPref != null) {
+            whiteListPref.setSummary(PhoneListManager.getNumberManager(PhoneListManager.ListType.WHITELIST).size() > 0 ?
+                    R.string.enabled_string : R.string.disabled_string);
+        }
+        Preference blackListPref = findPreference("Black List");
+        if (blackListPref != null) {
+            blackListPref.setSummary(PhoneListManager.getNumberManager(PhoneListManager.ListType.BLACKLIST).size() > 0 ?
+                    R.string.enabled_string : R.string.disabled_string);
+        }
         Preference deviceAdminPref = findPreference("preference_admin_features");
         if (deviceAdminPref != null) {
             if (Functions.isAdmin(SettingsActivity.this)) {

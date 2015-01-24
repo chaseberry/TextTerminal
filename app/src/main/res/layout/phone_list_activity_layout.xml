@@ -4,13 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="vertical"
         android:id="@+id/phone_lit_activity_list_view"
-        android:layout_weight="8"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp" />
+
+    <!--
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/empty"
+        android:text="Add a number" />
+
+    -->
 
     <ImageButton
         style="@style/floating_action_button_style"

@@ -34,6 +34,7 @@ public class TextTerminalActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_bar_menu, menu);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         return true;
     }
 }
