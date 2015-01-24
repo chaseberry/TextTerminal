@@ -59,7 +59,8 @@ public class PhoneListActivity extends TextTerminalActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String number = ((EditText) addNumberDialog.findViewById(R.id.add_number_edit_text)).getText().toString();
-                        if (PhoneListManager.getNumberManager(listType).addNumber(number)) {
+                        String tag = ((EditText) addNumberDialog.findViewById(R.id.add_tag_edit_text)).getText().toString();
+                        if (PhoneListManager.getNumberManager(listType).addNumber(number, tag)) {
                             itemAdded();
                         }
                     }
