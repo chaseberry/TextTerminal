@@ -8,10 +8,4 @@
         android:showAsAction="ifRoom"
         android:icon="@drawable/ic_settings_white_48dp" />
 
-    <item
-        android:id="@+id/action_bar_help"
-        android:title="Help"
-        android:showAsAction="ifRoom"
-        android:icon="@drawable/ic_help_white_48dp" />
-
 </menu>
