@@ -22,6 +22,7 @@ public class SettingsActivity extends PreferenceActivity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_bar_help:
+                startActivity(new Intent(this, HelpActivity.class));
                 return true;
             case android.R.id.home:
                 finish();

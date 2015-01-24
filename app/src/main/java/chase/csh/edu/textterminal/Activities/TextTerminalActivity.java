@@ -21,6 +21,7 @@ public class TextTerminalActivity extends Activity {
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.action_bar_help:
+                startActivity(new Intent(this, HelpActivity.class));
                 return true;
             case android.R.id.home:
                 finish();
