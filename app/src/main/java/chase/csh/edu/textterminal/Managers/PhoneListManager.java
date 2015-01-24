@@ -5,6 +5,9 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import chase.csh.edu.textterminal.Models.PhoneNumber;
+import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
+
 /**
  * Created by chase on 12/22/14.
  */
@@ -25,7 +28,7 @@ public abstract class PhoneListManager {
 
     }
 
-    private ArrayList<String> numbers;
+    private ArrayList<PhoneNumber> numbers;
     private ListType listType;
     private static WhiteListManager whiteListManager;
     private static BlackListManager blackListManager;
@@ -61,24 +64,25 @@ public abstract class PhoneListManager {
         try {
             JSONArray numbers = new JSONArray(SharedPrefManager.loadString(listType.toString(), "[]"));
             for (int z = 0; z < numbers.length(); z++) {
-                this.numbers.add(numbers.getString(z));
+                this.numbers.add(new PhoneNumber(JSONWrapper.parseJSON(numbers.getString(z))));
             }
         } catch (JSONException e) {
 
         }
     }
 
-    public boolean contains(String num) {
-        return numbers.contains(num);
+    public boolean contains(PhoneNumber number) {
+        return numbers.contains(number);
     }
 
-    public boolean addNumber(String num) {
+    public boolean addNumber(String num, String tag) {
         num = num.replace("-", "").replace("(", "").replace(")", "").replace(" ", "");
         if (!num.startsWith("+1")) {
             num = "+1" + num;
         }
-        if (!contains(num)) {
-            numbers.add(0, num);
+        PhoneNumber number = new PhoneNumber(num, tag);
+        if (!contains(number)) {
+            numbers.add(0, number);
             return true;
         }
         return false;
@@ -96,13 +100,16 @@ public abstract class PhoneListManager {
         return numbers.size();
     }
 
-    public String getNumber(int position) {
+    public PhoneNumber getNumber(int position) {
         //add fancy stuff like () and - ie (555) 444-4444 for readability
         return numbers.get(position);
     }
 
     public void save() {
-        JSONArray array = new JSONArray(numbers);
+        JSONArray array = new JSONArray();
+        for (PhoneNumber number : numbers) {
+            array.put(number.getNumberAsJson());
+        }
         SharedPrefManager.saveString(listType.toString(), array.toString());
     }
 
