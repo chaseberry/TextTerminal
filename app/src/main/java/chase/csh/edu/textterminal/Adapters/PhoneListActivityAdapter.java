@@ -2,6 +2,8 @@ package chase.csh.edu.textterminal.Adapters;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.TextView;
 
+import chase.csh.edu.textterminal.Activities.PhoneListActivity;
 import chase.csh.edu.textterminal.Managers.PhoneListManager;
 import chase.csh.edu.textterminal.R;
 import chase.csh.edu.textterminal.RecyclerViewSwipeListener;
@@ -35,12 +38,13 @@ public class PhoneListActivityAdapter extends RecyclerView.Adapter {
         View view = LayoutInflater.from(context).inflate(R.layout.phone_list_activity_item_layout, viewGroup, false);
         Holder holder = new Holder(view);
         RecyclerViewSwipeListener.bindListenerToView(view, holder, new RecyclerViewSwipeListener.Callback() {
-            
+
             @Override
             public void viewSwiped(int viewPosition) {
                 PhoneListManager.getNumberManager(type).removeNumber(viewPosition);
                 notifyItemRemoved(viewPosition);
                 PhoneListManager.getNumberManager(type).save();
+                LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent(PhoneListActivity.UPDATEEMPTYVIEWINTENT));
             }
         });
         return holder;

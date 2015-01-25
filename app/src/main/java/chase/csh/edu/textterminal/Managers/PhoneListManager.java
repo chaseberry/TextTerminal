@@ -14,7 +14,7 @@ import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
 public abstract class PhoneListManager {
 
     public enum ListType {
-        BLACKLIST("Black List"), WHITELIST("White List");
+        BLACKLIST("Blacklist"), WHITELIST("Whitelist");
 
         String val;
 
@@ -34,10 +34,10 @@ public abstract class PhoneListManager {
     private static BlackListManager blackListManager;
 
     public static ListType stringToListType(String in) {
-        if (in.equals("Black List")) {
+        if (in.equals(ListType.BLACKLIST.toString())) {
             return ListType.BLACKLIST;
         }
-        if (in.equals("White List")) {
+        if (in.equals(ListType.WHITELIST.toString())) {
             return ListType.WHITELIST;
         }
         return null;

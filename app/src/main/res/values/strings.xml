@@ -5,7 +5,7 @@
 
 
     <string name="phone_list_type">PHONE_LIST_TYPE</string>
-    <string name="blacklist_string">Black List</string>
-    <string name="whitelist_string">White List</string>
+    <string name="blacklist_string">Blacklist</string>
+    <string name="whitelist_string">Whitelist</string>
 
 </resources>

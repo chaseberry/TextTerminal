@@ -7,26 +7,26 @@
         android:key="preference_pin" />
     <Preference
         android:title="@string/whitelist_string"
-        android:key="White List">
+        android:key="Whitelist">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetClass="chase.csh.edu.textterminal.Activities.PhoneListActivity"
             android:targetPackage="chase.csh.edu.textterminal">
             <extra
                 android:name="PHONE_LIST_TYPE"
-                android:value="White List" />
+                android:value="Whitelist" />
         </intent>
     </Preference>
     <Preference
         android:title="@string/blacklist_string"
-        android:key="Black List">
+        android:key="Blacklist">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetClass="chase.csh.edu.textterminal.Activities.PhoneListActivity"
             android:targetPackage="chase.csh.edu.textterminal">
             <extra
                 android:name="PHONE_LIST_TYPE"
-                android:value="Black List" />
+                android:value="Blacklist" />
         </intent>
     </Preference>
     <CheckBoxPreference

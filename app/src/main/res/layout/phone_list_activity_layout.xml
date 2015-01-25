@@ -11,17 +11,14 @@
         android:id="@+id/phone_list_activity_list_view"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp" />
-    <!-- TODO ADD A DIVIDER -->
-
-    <!--
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/empty"
-        android:text="Add a number" />
-
-    -->
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:id="@+id/phone_list_activity_empty_view"
+        android:textSize="18sp" />
 
     <ImageButton
         style="@style/floating_action_button_style"

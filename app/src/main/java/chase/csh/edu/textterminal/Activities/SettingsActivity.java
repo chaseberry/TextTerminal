@@ -77,12 +77,12 @@ public class SettingsActivity extends PreferenceActivity {
                     ((SharedPrefManager.loadString(Command.SECURITYCODEKEY, "").length() > 0)
                             ? R.string.enabled_string : R.string.disabled_string));
         }
-        Preference whiteListPref = findPreference("White List");
+        Preference whiteListPref = findPreference("Whitelist");
         if (whiteListPref != null) {
             whiteListPref.setSummary(PhoneListManager.getNumberManager(PhoneListManager.ListType.WHITELIST).size() > 0 ?
                     R.string.enabled_string : R.string.disabled_string);
         }
-        Preference blackListPref = findPreference("Black List");
+        Preference blackListPref = findPreference("Blacklist");
         if (blackListPref != null) {
             blackListPref.setSummary(PhoneListManager.getNumberManager(PhoneListManager.ListType.BLACKLIST).size() > 0 ?
                     R.string.enabled_string : R.string.disabled_string);

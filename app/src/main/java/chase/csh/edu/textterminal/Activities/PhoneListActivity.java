@@ -2,10 +2,15 @@ package chase.csh.edu.textterminal.Activities;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.DragEvent;
@@ -14,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import chase.csh.edu.textterminal.Adapters.PhoneListActivityAdapter;
 import chase.csh.edu.textterminal.DividerItemDecoration;
@@ -27,14 +33,46 @@ import chase.csh.edu.textterminal.R;
  */
 public class PhoneListActivity extends TextTerminalActivity {
 
+    public static final String UPDATEEMPTYVIEWINTENT = "edu.csh.chase.TexTerminal.phoneListActivity.emptyView";
+
     private PhoneListManager.ListType listType;
     private Dialog addNumberDialog;
+    private TextView emptyView;
+    private BroadcastReceiver emptyViewUpdateReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPrefManager.loadSharedPrefs(this);
         setContentView(R.layout.phone_list_activity_layout);
+
+        emptyViewUpdateReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (PhoneListManager.getNumberManager(listType).size() == 0) {
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            emptyView.setVisibility(View.VISIBLE);
+                            //TODO fade in
+                        }
+                    });
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(this).registerReceiver((emptyViewUpdateReceiver),
+                new IntentFilter(UPDATEEMPTYVIEWINTENT));
+    }
+
+    @Override
+    protected void onStop() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(emptyViewUpdateReceiver);
+        super.onStop();
     }
 
     @Override
@@ -48,6 +86,13 @@ public class PhoneListActivity extends TextTerminalActivity {
         listView.setLayoutManager(layoutManager);
         setTitle(listType.toString());
         listView.addItemDecoration(new DividerItemDecoration(PhoneListActivity.this, DividerItemDecoration.VERTICAL_LIST));
+
+        emptyView = (TextView) findViewById(R.id.phone_list_activity_empty_view);
+        emptyView.setText(listType.toString() + " a number");
+        if (PhoneListManager.getNumberManager(listType).size() != 0) {
+            emptyView.setVisibility(View.GONE);
+        }
+
         //((ListView) findViewById(R.id.phone_lit_activity_list_view)).setEmptyView();
     }
 
@@ -85,5 +130,9 @@ public class PhoneListActivity extends TextTerminalActivity {
     public void itemAdded() {
         ((RecyclerView) findViewById(R.id.phone_list_activity_list_view)).getAdapter().notifyItemInserted(0);
         PhoneListManager.getNumberManager(listType).save();
+        if (emptyView.getVisibility() != View.GONE) {
+            emptyView.setVisibility(View.GONE);
+            //TODO fade out
+        }
     }
 }
