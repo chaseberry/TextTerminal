@@ -89,6 +89,9 @@ public abstract class PhoneListManager {
         if (!num.startsWith("+1")) {
             num = "+1" + num;
         }
+        if (num.length() != 12) {
+            return false;
+        }
         PhoneNumber number = new PhoneNumber(num, tag);
         if (!contains(number)) {
             numbers.add(0, number);

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import chase.csh.edu.textterminal.Adapters.PhoneListActivityAdapter;
+import chase.csh.edu.textterminal.DividerItemDecoration;
 import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.Managers.PhoneListManager;
 import chase.csh.edu.textterminal.Managers.SharedPrefManager;
@@ -46,6 +47,7 @@ public class PhoneListActivity extends TextTerminalActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         listView.setLayoutManager(layoutManager);
         setTitle(listType.toString());
+        listView.addItemDecoration(new DividerItemDecoration(PhoneListActivity.this, DividerItemDecoration.VERTICAL_LIST));
         //((ListView) findViewById(R.id.phone_lit_activity_list_view)).setEmptyView();
     }
 
@@ -82,5 +84,6 @@ public class PhoneListActivity extends TextTerminalActivity {
 
     public void itemAdded() {
         ((RecyclerView) findViewById(R.id.phone_list_activity_list_view)).getAdapter().notifyItemInserted(0);
+        PhoneListManager.getNumberManager(listType).save();
     }
 }

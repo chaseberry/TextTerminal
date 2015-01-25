@@ -35,10 +35,12 @@ public class PhoneListActivityAdapter extends RecyclerView.Adapter {
         View view = LayoutInflater.from(context).inflate(R.layout.phone_list_activity_item_layout, viewGroup, false);
         Holder holder = new Holder(view);
         RecyclerViewSwipeListener.bindListenerToView(view, holder, new RecyclerViewSwipeListener.Callback() {
+            
             @Override
             public void viewSwiped(int viewPosition) {
                 PhoneListManager.getNumberManager(type).removeNumber(viewPosition);
                 notifyItemRemoved(viewPosition);
+                PhoneListManager.getNumberManager(type).save();
             }
         });
         return holder;

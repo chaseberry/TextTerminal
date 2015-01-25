@@ -40,7 +40,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         WhiteListManager whiteList = new WhiteListManager();//Create a reference to the whiteList
 
                         BlackListManager blackList = new BlackListManager();//create a reference to the blackList
-                    /*
+
                         if (whiteList.size() > 0 && !whiteList.contains(phoneNumber)) {
                             continue;
                         }
@@ -48,7 +48,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         if (blackList.contains(phoneNumber)) {
                             continue;
                         }
-                    */
+                    
                         String[] bodyParts = message.split(" ");
                         String code = SharedPrefManager.loadString(Command.SECURITYCODEKEY, "");
                         if (!code.equals("")) {
