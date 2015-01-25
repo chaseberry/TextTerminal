@@ -44,7 +44,7 @@ public class PhoneNumber {
         return number;
     }
 
-    public String getTagkey() {
+    public String getTag() {
         return tag;
     }
 

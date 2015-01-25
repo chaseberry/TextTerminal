@@ -1,6 +1,5 @@
 package chase.csh.edu.textterminal.Commands;
 
-
 import android.content.Context;
 
 import org.json.JSONObject;

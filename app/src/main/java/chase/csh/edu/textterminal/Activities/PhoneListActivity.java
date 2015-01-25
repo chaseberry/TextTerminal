@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import chase.csh.edu.textterminal.Adapters.PhoneListActivityAdapter;
+import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.Managers.PhoneListManager;
 import chase.csh.edu.textterminal.Managers.SharedPrefManager;
 import chase.csh.edu.textterminal.R;
@@ -39,9 +40,9 @@ public class PhoneListActivity extends TextTerminalActivity {
         super.onResume();
         listType = PhoneListManager.stringToListType(getIntent().getStringExtra(getResources().getString(R.string.phone_list_type)));
         PhoneListActivityAdapter adatper = new PhoneListActivityAdapter(listType, this);
-        ((android.support.v7.widget.RecyclerView) findViewById(R.id.phone_lit_activity_list_view)).setAdapter(adatper);
+        ((android.support.v7.widget.RecyclerView) findViewById(R.id.phone_list_activity_list_view)).setAdapter(adatper);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        ((android.support.v7.widget.RecyclerView) findViewById(R.id.phone_lit_activity_list_view)).setLayoutManager(layoutManager);
+        ((android.support.v7.widget.RecyclerView) findViewById(R.id.phone_list_activity_list_view)).setLayoutManager(layoutManager);
         setTitle(listType.toString());
         //((ListView) findViewById(R.id.phone_lit_activity_list_view)).setEmptyView();
     }
@@ -62,6 +63,8 @@ public class PhoneListActivity extends TextTerminalActivity {
                         String tag = ((EditText) addNumberDialog.findViewById(R.id.add_tag_edit_text)).getText().toString();
                         if (PhoneListManager.getNumberManager(listType).addNumber(number, tag)) {
                             itemAdded();
+                        } else {
+                            Functions.createToastMessage("Number already in " + listType.toString(), PhoneListActivity.this, false);
                         }
                     }
                 })
@@ -70,7 +73,7 @@ public class PhoneListActivity extends TextTerminalActivity {
     }
 
     public void itemAdded() {
-        ((RecyclerView) findViewById(R.id.phone_lit_activity_list_view)).getAdapter().notifyItemInserted(0);
+        ((RecyclerView) findViewById(R.id.phone_list_activity_list_view)).getAdapter().notifyItemInserted(0);
         PhoneListManager.getNumberManager(listType).save();
     }
 }

@@ -1,21 +1,11 @@
 package chase.csh.edu.textterminal.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.DragEvent;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.util.List;
 
 import chase.csh.edu.textterminal.Managers.PhoneListManager;
 import chase.csh.edu.textterminal.R;
@@ -36,13 +26,15 @@ public class PhoneListActivityAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
-        View v = LayoutInflater.from(context).inflate(R.layout.phone_list_activity_item_layout, viewGroup, false);
-        return new Holder((TextView) v, context);
+        View view = LayoutInflater.from(context).inflate(R.layout.phone_list_activity_item_layout, viewGroup, false);
+
+        return new Holder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-        ((Holder) viewHolder).setText(PhoneListManager.getNumberManager(type).getNumber(position));
+        ((Holder) viewHolder).setNumberText(PhoneListManager.getNumberManager(type).getNumber(position).formatNumber());
+        ((Holder) viewHolder).setTagViewText(PhoneListManager.getNumberManager(type).getNumber(position).getTag());
     }
 
     @Override
@@ -58,30 +50,20 @@ public class PhoneListActivityAdapter extends RecyclerView.Adapter {
     static class Holder extends RecyclerView.ViewHolder {
 
         TextView number;
-        GestureDetector detector;
-        GestureDetector.SimpleOnGestureListener gestureListener = new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                System.out.println(velocityX + ":::" + velocityY);
-                return false;
-            }
-        };
+        TextView tagView;
 
-        public Holder(TextView itemView, Context context) {
-            super(itemView);
-            number = itemView;
-            detector = new GestureDetector(context, gestureListener);
-            number.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    detector.onTouchEvent(event);
-                    return false;
-                }
-            });
+        public Holder(View parentView) {
+            super(parentView);
+            number = (TextView) parentView.findViewById(R.id.phone_list_activity_list_item_number);
+            tagView = (TextView) parentView.findViewById(R.id.phone_list_activity_list_item_tag);
         }
 
-        public void setText(String text) {
+        public void setNumberText(String text) {
             number.setText(text);
+        }
+
+        public void setTagViewText(String text) {
+            tagView.setText(text);
         }
     }
 }

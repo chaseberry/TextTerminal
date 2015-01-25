@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:id="@+id/phone_lit_activity_list_view"
+        android:id="@+id/phone_list_activity_list_view"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp" />
     <!-- TODO ADD A DIVIDER -->

@@ -70,7 +70,7 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     protected void onResume() {
         super.onRestart();
-
+        SharedPrefManager.loadSharedPrefs(this);
         Preference pinPref = findPreference("preference_pin");
         if (pinPref != null) {
             pinPref.setSummary(

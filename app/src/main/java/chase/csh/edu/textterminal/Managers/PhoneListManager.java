@@ -75,6 +75,15 @@ public abstract class PhoneListManager {
         return numbers.contains(number);
     }
 
+    public boolean contains(String number) {
+        for (PhoneNumber phoneNumber : numbers) {
+            if (number != null && number.equals(phoneNumber.getNumber())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean addNumber(String num, String tag) {
         num = num.replace("-", "").replace("(", "").replace(")", "").replace(" ", "");
         if (!num.startsWith("+1")) {
