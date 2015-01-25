@@ -117,7 +117,8 @@ public class PhoneListActivity extends TextTerminalActivity {
                             new Handler(Looper.getMainLooper()).post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Functions.createToastMessage("Number already in " + listType.toString(), PhoneListActivity.this, false);
+                                    Functions.createToastMessage("Number already in " + listType.toString(),
+                                            PhoneListActivity.this, false).show();
                                 }
                             });
                         }
