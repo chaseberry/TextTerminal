@@ -111,14 +111,30 @@ public class PhoneListActivity extends TextTerminalActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String number = ((EditText) addNumberDialog.findViewById(R.id.add_number_edit_text)).getText().toString();
                         String tag = ((EditText) addNumberDialog.findViewById(R.id.add_tag_edit_text)).getText().toString();
-                        if (PhoneListManager.getNumberManager(listType).addNumber(number, tag)) {
+                        final PhoneListManager.AddNumberResult result = PhoneListManager.getNumberManager(listType).addNumber(number, tag);
+                        if (result == PhoneListManager.AddNumberResult.success) {
                             itemAdded();
                         } else {
                             new Handler(Looper.getMainLooper()).post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Functions.createToastMessage("Number already in " + listType.toString(),
-                                            PhoneListActivity.this, false).show();
+                                    switch (result) {
+                                        case alreadyExists:
+                                            Functions.createToastMessage("Number already in " + listType.toString(),
+                                                    PhoneListActivity.this, false).show();
+                                            break;
+
+                                        case noTag:
+                                            Functions.createToastMessage("You must supply a tag for this number",
+                                                    PhoneListActivity.this, false).show();
+                                            break;
+
+                                        case invalidFormat:
+                                            Functions.createToastMessage("Invalid phone number",
+                                                    PhoneListActivity.this, false).show();
+                                            break;
+                                    }
+
                                 }
                             });
                         }

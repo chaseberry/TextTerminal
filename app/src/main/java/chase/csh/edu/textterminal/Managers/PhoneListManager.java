@@ -28,6 +28,10 @@ public abstract class PhoneListManager {
 
     }
 
+    public enum AddNumberResult {
+        alreadyExists, invalidFormat, noTag, success
+    }
+
     private ArrayList<PhoneNumber> numbers;
     private ListType listType;
     private static WhiteListManager whiteListManager;
@@ -84,20 +88,23 @@ public abstract class PhoneListManager {
         return false;
     }
 
-    public boolean addNumber(String num, String tag) {
+    public AddNumberResult addNumber(String num, String tag) {
         num = num.replace("-", "").replace("(", "").replace(")", "").replace(" ", "");
         if (!num.startsWith("+1")) {
             num = "+1" + num;
         }
         if (num.length() != 12) {
-            return false;
+            return AddNumberResult.invalidFormat;
+        }
+        if (tag == null || tag.length() == 0) {
+            return AddNumberResult.noTag;
         }
         PhoneNumber number = new PhoneNumber(num, tag);
         if (!contains(number)) {
             numbers.add(0, number);
-            return true;
+            return AddNumberResult.success;
         }
-        return false;
+        return AddNumberResult.alreadyExists;
     }
 
     public boolean removeNumber(String num) {
