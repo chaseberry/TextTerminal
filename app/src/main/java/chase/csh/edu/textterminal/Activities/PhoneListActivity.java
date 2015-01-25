@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.DragEvent;
@@ -40,9 +41,10 @@ public class PhoneListActivity extends TextTerminalActivity {
         super.onResume();
         listType = PhoneListManager.stringToListType(getIntent().getStringExtra(getResources().getString(R.string.phone_list_type)));
         PhoneListActivityAdapter adatper = new PhoneListActivityAdapter(listType, this);
-        ((android.support.v7.widget.RecyclerView) findViewById(R.id.phone_list_activity_list_view)).setAdapter(adatper);
+        RecyclerView listView = ((android.support.v7.widget.RecyclerView) findViewById(R.id.phone_list_activity_list_view));
+        listView.setAdapter(adatper);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        ((android.support.v7.widget.RecyclerView) findViewById(R.id.phone_list_activity_list_view)).setLayoutManager(layoutManager);
+        listView.setLayoutManager(layoutManager);
         setTitle(listType.toString());
         //((ListView) findViewById(R.id.phone_lit_activity_list_view)).setEmptyView();
     }
@@ -50,6 +52,7 @@ public class PhoneListActivity extends TextTerminalActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        PhoneListManager.getNumberManager(listType).save();
     }
 
     public void addNumber(View view) {
@@ -64,7 +67,12 @@ public class PhoneListActivity extends TextTerminalActivity {
                         if (PhoneListManager.getNumberManager(listType).addNumber(number, tag)) {
                             itemAdded();
                         } else {
-                            Functions.createToastMessage("Number already in " + listType.toString(), PhoneListActivity.this, false);
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Functions.createToastMessage("Number already in " + listType.toString(), PhoneListActivity.this, false);
+                                }
+                            });
                         }
                     }
                 })
@@ -74,6 +82,5 @@ public class PhoneListActivity extends TextTerminalActivity {
 
     public void itemAdded() {
         ((RecyclerView) findViewById(R.id.phone_list_activity_list_view)).getAdapter().notifyItemInserted(0);
-        PhoneListManager.getNumberManager(listType).save();
     }
 }
