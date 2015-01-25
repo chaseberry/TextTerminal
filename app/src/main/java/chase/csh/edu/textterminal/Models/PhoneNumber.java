@@ -36,8 +36,8 @@ public class PhoneNumber {
     }
 
     public String formatNumber() {
-        //TODO format the number here
-        return number;
+        String temp = number.replace("+1", "");
+        return "(" + temp.substring(0, 3) + ") " + temp.substring(3, 6) + "-" + temp.substring(6, 10);
     }
 
     public String getNumber() {

@@ -31,7 +31,7 @@ public class SmsReceiver extends BroadcastReceiver {
                     try {
                         SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) aPdusObj);
 
-                        String phoneNumber = currentMessage.getDisplayOriginatingAddress();//format is 5188361344
+                        String phoneNumber = "+1" + currentMessage.getDisplayOriginatingAddress();//TODO confirm the +1 works
 
                         String message = currentMessage.getDisplayMessageBody();
 
@@ -48,7 +48,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         if (blackList.contains(phoneNumber)) {
                             continue;
                         }
-                    
+
                         String[] bodyParts = message.split(" ");
                         String code = SharedPrefManager.loadString(Command.SECURITYCODEKEY, "");
                         if (!code.equals("")) {
