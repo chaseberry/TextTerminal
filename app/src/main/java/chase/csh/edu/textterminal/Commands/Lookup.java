@@ -46,7 +46,7 @@ public class Lookup extends Command {
             for (String vCard : vCards) {
                 message += parseVCard(vCard).toString() + "\n";
             }
-            sendMessage(message, fromNumber);
+            sendMessage(message, fromNumber);//TODO Format output differently?
         } else {
             System.out.println(fromNumber);
             sendMessage(parseVCard(vCards.get(0)).toString(), fromNumber);//Format
