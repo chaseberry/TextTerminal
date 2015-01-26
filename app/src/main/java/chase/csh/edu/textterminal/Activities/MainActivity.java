@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 
-import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.Adapters.MainActivityListLoader;
-import chase.csh.edu.textterminal.R;
+import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.Managers.SharedPrefManager;
+import chase.csh.edu.textterminal.R;
 import dalvik.system.DexFile;
 
 public class MainActivity extends TextTerminalActivity {
@@ -27,7 +27,6 @@ public class MainActivity extends TextTerminalActivity {
         SharedPrefManager.loadSharedPrefs(this);
         setContentView(R.layout.main_activity_layout);
         ArrayList<String> classNames = new ArrayList<>();
-        //new Lookup(this, new String[]{"Lookup", "Mike Keegan"}, "5188361344").execute();
         try {
             DexFile df = new DexFile(getPackageCodePath());
             for (Enumeration<String> iter = df.entries(); iter.hasMoreElements(); ) {

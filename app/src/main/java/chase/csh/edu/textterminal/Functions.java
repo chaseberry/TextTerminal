@@ -55,4 +55,15 @@ public class Functions {
         c.startActivity(intent);
     }
 
+    public static String formatNumber(String num) {
+        num = num.replace("-", "").replace("(", "").replace(")", "").replace(" ", "");
+        if (!num.startsWith("+1")) {
+            num = "+1" + num;
+        }
+        if (num.length() != 12) {
+            return null;
+        }
+        return num;
+    }
+
 }

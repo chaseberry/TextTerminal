@@ -25,5 +25,4 @@ dependencies {
     compile project(':RestfulAPIConnector')
     compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.github.satyan:sugar:1.3'
-
 }

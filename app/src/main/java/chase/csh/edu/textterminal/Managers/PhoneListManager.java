@@ -5,6 +5,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.Models.PhoneNumber;
 import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
 
@@ -89,11 +90,8 @@ public abstract class PhoneListManager {
     }
 
     public AddNumberResult addNumber(String num, String tag) {
-        num = num.replace("-", "").replace("(", "").replace(")", "").replace(" ", "");
-        if (!num.startsWith("+1")) {
-            num = "+1" + num;
-        }
-        if (num.length() != 12) {
+        num = Functions.formatNumber(num);
+        if (num == null) {
             return AddNumberResult.invalidFormat;
         }
         if (tag == null || tag.length() == 0) {

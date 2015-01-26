@@ -49,6 +49,8 @@ public class SmsReceiver extends BroadcastReceiver {
                             continue;
                         }
 
+                        //TODO generate a list of commands, check if it exists to help incoming messages
+
                         String[] bodyParts = message.split(" ");
                         String code = SharedPrefManager.loadString(Command.SECURITYCODEKEY, "");
                         if (!code.equals("")) {

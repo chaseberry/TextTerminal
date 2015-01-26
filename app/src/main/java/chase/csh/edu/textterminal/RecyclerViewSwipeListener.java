@@ -8,13 +8,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 
-import chase.csh.edu.textterminal.Managers.PhoneListManager;
-
 /**
  * Created by chase on 1/24/15.
  */
 public class RecyclerViewSwipeListener {
-
+    //TODO cleanup this so it functions much more smoothly
     public static void bindListenerToView(final View view, final RecyclerView.ViewHolder holder, final Callback callback) {
 
         final GestureDetectorCompat gestureDetector = new GestureDetectorCompat(view.getContext(),

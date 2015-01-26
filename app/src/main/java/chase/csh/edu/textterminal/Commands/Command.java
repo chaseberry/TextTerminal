@@ -86,6 +86,7 @@ public abstract class Command {
     protected void sendMessage(String message, String to) {
         SmsManager sms = SmsManager.getDefault();
         sms.sendMultipartTextMessage(to, null, sms.divideMessage(message), null, null);
+
         //Log attempted to send message in response - ToNum
     }
 
