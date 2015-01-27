@@ -8,7 +8,7 @@ import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
 /**
  * Created by chase on 1/26/15.
  */
-public class CommandExtra {
+public class CommandExtra implements JSONable {
 
     public static final String NAME_KEY = "name";
     public static final String VALUE_KEY = "value";
@@ -22,18 +22,6 @@ public class CommandExtra {
         name = jsonObj.checkAndGetString(null, NAME_KEY);
         value = jsonObj.checkAndGetObject(null, VALUE_KEY);
         type = (Class) jsonObj.checkAndGetObject(null, TYPE_KEY);
-    }
-
-    public JSONObject getSaveObject() {
-        JSONObject obj = new JSONObject();
-        try {
-            obj.put(NAME_KEY, name);
-            obj.put(VALUE_KEY, value);
-            obj.put(TYPE_KEY, type);
-        } catch (JSONException e) {
-
-        }
-        return obj;
     }
 
     public String getName() {
@@ -53,4 +41,16 @@ public class CommandExtra {
     }
 
 
+    @Override
+    public JSONObject getJSONClass() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put(NAME_KEY, name);
+            obj.put(VALUE_KEY, value);
+            obj.put(TYPE_KEY, type);
+        } catch (JSONException e) {
+
+        }
+        return obj;
+    }
 }
