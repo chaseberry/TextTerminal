@@ -40,8 +40,8 @@ public class Lock extends Command {
     }
 
     @Override
-    public String[] getFlags() {
-        return new String[0];
+    public CommandFlag[] getFlags() {
+        return new CommandFlag[0];
     }
 
     @Override

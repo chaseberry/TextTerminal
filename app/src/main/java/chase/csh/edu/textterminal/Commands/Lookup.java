@@ -13,7 +13,6 @@ import org.json.JSONObject;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -78,7 +77,7 @@ public class Lookup extends Command {
 
     @Override
     public String[] getFlags() {
-        return new String[]{"[-a] will send all values found instead of just the first"};
+        return new CommandFlag[]{new CommandFlag("-a", "all", "sends all values found instead of just the first")};
     }
 
     @Override

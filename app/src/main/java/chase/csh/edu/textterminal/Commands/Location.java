@@ -78,8 +78,8 @@ public class Location extends Command {
     }
 
     @Override
-    public String[] getFlags() {
-        return new String[]{"[-a] adds the accuracy."};
+    public CommandFlag[] getFlags() {
+        return new CommandFlag[]{new CommandFlag("-a", "Accuracy", "Sends the accuracy back with the location.")};
     }
 
     @Override

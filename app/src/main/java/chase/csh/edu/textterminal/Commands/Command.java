@@ -77,7 +77,7 @@ public abstract class Command implements JSONable {
 
     public abstract String[] getParams();
 
-    public abstract String[] getFlags();
+    public abstract CommandFlag[] getFlags();
 
     private boolean canExecute() {
         return enabled;

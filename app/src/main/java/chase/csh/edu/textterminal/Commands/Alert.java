@@ -84,8 +84,8 @@ public class Alert extends Command {
     }
 
     @Override
-    public String[] getFlags() {
-        return (new String[]{"[-f] forces the alert to override volume settings."});
+    public CommandFlag[] getFlags() {
+        return new CommandFlag[]{new CommandFlag("-f", "force", "forces the alert to override volume settings")};
     }
 
     @Override
