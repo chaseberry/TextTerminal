@@ -74,7 +74,7 @@ public class SettingsActivity extends PreferenceActivity {
         Preference pinPref = findPreference("preference_pin");
         if (pinPref != null) {
             pinPref.setSummary(
-                    ((SharedPrefManager.loadString(Command.SECURITYCODEKEY, "").length() > 0)
+                    ((SharedPrefManager.loadString(Command.SECURITY_CODE_KEY, "").length() > 0)
                             ? R.string.enabled_string : R.string.disabled_string));
         }
         Preference whiteListPref = findPreference("Whitelist");

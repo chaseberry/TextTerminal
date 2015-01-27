@@ -52,7 +52,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         //TODO generate a list of commands, check if it exists to help incoming messages
 
                         String[] bodyParts = message.split(" ");
-                        String code = SharedPrefManager.loadString(Command.SECURITYCODEKEY, "");
+                        String code = SharedPrefManager.loadString(Command.SECURITY_CODE_KEY, "");
                         if (!code.equals("")) {
                             if (!Functions.checkPassword(code, bodyParts[0])) {
                                 //Security-code failed.. May be invalid, may be text, unsure, no way to know

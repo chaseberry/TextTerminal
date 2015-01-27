@@ -76,14 +76,14 @@ public class Lookup extends Command {
     }
 
     @Override
-    public String[] getFlags() {
+    public CommandFlag[] getFlags() {
         return new CommandFlag[]{new CommandFlag("-a", "all", "sends all values found instead of just the first")};
     }
 
     @Override
     protected JSONObject addExtras(JSONObject obj) {
         try {
-            return obj.put(KEY_ALLOWED_FLAGS, new JSONArray().put("-a"));
+            return obj.put(KEY_FLAGS, new JSONArray().put("-a"));
         } catch (JSONException e) {
         }
         return obj;

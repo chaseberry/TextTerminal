@@ -91,7 +91,7 @@ public class Alert extends Command {
     @Override
     protected JSONObject addExtras(JSONObject obj) {
         try {
-            obj.put(KEY_ALLOWED_FLAGS, new JSONArray().put("-f"));
+            obj.put(KEY_FLAGS, new JSONArray().put("-f"));
         } catch (JSONException e) {
 
         }

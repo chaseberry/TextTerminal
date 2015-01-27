@@ -85,7 +85,7 @@ public class Location extends Command {
     @Override
     protected JSONObject addExtras(JSONObject obj) {
         try {
-            obj.put(KEY_ALLOWED_FLAGS, new JSONArray().put("-a"));
+            obj.put(KEY_FLAGS, new JSONArray().put("-a"));
         } catch (JSONException e) {
 
         }

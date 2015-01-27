@@ -34,7 +34,7 @@ public class SecurityCodeActivity extends TextTerminalActivity {
             return;
         }
 
-        SharedPrefManager.saveString(Command.SECURITYCODEKEY, Functions.hashPassword(newPass));
+        SharedPrefManager.saveString(Command.SECURITY_CODE_KEY, Functions.hashPassword(newPass));
         if (getCurrentFocus() != null && getCurrentFocus() instanceof EditText) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(findViewById(R.id.security_code_activity_code_confirm).getWindowToken(), 0);
@@ -44,7 +44,7 @@ public class SecurityCodeActivity extends TextTerminalActivity {
     }
 
     public void clearSecurityCode(View view) {
-        SharedPrefManager.saveString(Command.SECURITYCODEKEY, "");
+        SharedPrefManager.saveString(Command.SECURITY_CODE_KEY, "");
         Functions.createToastMessage("Code Removed", this, false).show();
     }
 }

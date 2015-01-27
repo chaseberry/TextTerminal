@@ -14,9 +14,9 @@ import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONObjectWrapper;
 
 public abstract class Command implements JSONable {
 
-    public static final String SECURITYCODEKEY = "securityKey";
+    public static final String SECURITY_CODE_KEY = "securityKey";
     public static final String KEY_ENABLED = "enabled";
-    public static final String KEY_ALLOWED_FLAGS = "allowedFlags";
+    public static final String KEY_FLAGS = "allowedFlags";
 
 
     private final String name;//Display purposes
@@ -51,7 +51,7 @@ public abstract class Command implements JSONable {
         try {
             JSONObjectWrapper obj = new JSONObjectWrapper(SharedPrefManager.loadString(getName(), null));
             enabled = obj.checkAndGetBoolean(false, KEY_ENABLED);
-            allowedFlags = new ArrayList<String>(Arrays.asList(obj.checkAndGetStringArray(new String[0], KEY_ALLOWED_FLAGS)));
+            allowedFlags = new ArrayList<String>(Arrays.asList(obj.checkAndGetStringArray(new String[0], KEY_FLAGS)));
         } catch (Exception e) {
             enabled = false;//Make it not able to fun.
             //Something couldn't load
