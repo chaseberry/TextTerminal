@@ -12,7 +12,7 @@ import java.util.Arrays;
 import chase.csh.edu.textterminal.Managers.SharedPrefManager;
 import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONObjectWrapper;
 
-public abstract class Command {
+public abstract class Command implements JSONable {
 
     public static final String SECURITYCODEKEY = "securityKey";
     public static final String KEY_ENABLED = "enabled";
@@ -100,7 +100,7 @@ public abstract class Command {
 
     protected abstract JSONObject addExtras(JSONObject obj);
 
-    private JSONObject createSaveObject() {
+    public JSONObject getJSONClass() {
         JSONObject obj = new JSONObject();
         obj = addExtras(obj);
         try {
@@ -112,7 +112,7 @@ public abstract class Command {
     }
 
     public void save() {
-        SharedPrefManager.saveString(getName(), createSaveObject().toString());
+        SharedPrefManager.saveString(getName(), getJSONClass().toString());
     }
 
     public boolean isEnabled() {
