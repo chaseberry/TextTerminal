@@ -42,7 +42,7 @@ public class Lookup extends Command {
             sendMessage(fromNumber, "No results found for " + lookup);
             return true;
         }
-        if (flags.contains("-a")) {
+        if (canUseFlag(ALL_FLAG)) {
             String message = "";
             for (String vCard : vCards) {
                 message += parseVCard(vCard).toString() + "\n";
