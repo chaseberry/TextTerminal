@@ -19,6 +19,8 @@ import chase.csh.edu.textterminal.R;
  */
 public class Alert extends Command {
 
+    private final String FORCE_FLAG = "-f";
+
     public Alert(Context c, String[] values, String num) {
         super(c, "Alert", R.drawable.ic_volume_up_white_48dp, values, num);
     }
@@ -29,7 +31,7 @@ public class Alert extends Command {
         final AudioManager audioManager = (AudioManager) parent.getSystemService(Context.AUDIO_SERVICE);
         int volume = audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION);
         final int firstVol = volume;
-        if (flags.contains("-f")) {
+        if (canUseFlag(FORCE_FLAG)) {
             volume = audioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION);
             audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION,
                     audioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION), 0);
@@ -87,10 +89,10 @@ public class Alert extends Command {
     @Override
     public ArrayList<CommandFlag> getFlags() {
         ArrayList<CommandFlag> flags = new ArrayList<>(1);//Number of flags
-        if (commandFlags.get("-f") != null) {
-            flags.add(commandFlags.get("-f"));//Was this flag loaded before?
+        if (commandFlags.get(FORCE_FLAG) != null) {
+            flags.add(commandFlags.get(FORCE_FLAG));//Was this flag loaded before?
         } else {
-            flags.add(new CommandFlag("-f", "force", "forces the alert to override volume settings"));
+            flags.add(new CommandFlag(FORCE_FLAG, "Force", "Forces the alert to override volume settings"));
         }
         return flags;
     }

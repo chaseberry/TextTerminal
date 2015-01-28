@@ -24,7 +24,7 @@ public class Location extends Command {
             android.location.Location l = LocationServices.FusedLocationApi.getLastLocation(locationClient);
             if (l != null) {
                 String location = "(" + l.getLatitude() + ", " + l.getLongitude() + ")";
-                if (flags.contains("-a")) {
+                if (canUseFlag(ACCURACY_FLAG)) {
                     location += " within " + l.getAccuracy() + "m";
                 }
                 sendMessage("Location is " + location, fromNumber);
