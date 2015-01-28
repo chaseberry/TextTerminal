@@ -8,8 +8,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+
 import chase.csh.edu.textterminal.BCrypt.BCrypt;
 import chase.csh.edu.textterminal.Receivers.DeviceAdminReceiver;
+import dalvik.system.DexFile;
 
 /**
  * Created by chase on 12/4/14.
@@ -64,6 +69,22 @@ public class Functions {
             return null;
         }
         return num;
+    }
+
+    public static ArrayList<String> getCommandClassNames(Context context) {
+        ArrayList<String> classNames = new ArrayList<>();
+        try {
+            DexFile df = new DexFile(context.getPackageCodePath());
+            for (Enumeration<String> iter = df.entries(); iter.hasMoreElements(); ) {
+                String s = iter.nextElement();
+                if (s.contains(".Commands") && !s.contains("$") && !s.contains(".Commands.Command")) {
+                    classNames.add(s);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return classNames;
     }
 
 }
