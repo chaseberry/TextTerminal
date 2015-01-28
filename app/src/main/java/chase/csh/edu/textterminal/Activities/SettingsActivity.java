@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import chase.csh.edu.textterminal.Commands.Command;
+import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.Managers.PhoneListManager;
 import chase.csh.edu.textterminal.R;

@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import chase.csh.edu.textterminal.Commands.Command;
+import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
 import chase.csh.edu.textterminal.Managers.SharedPrefManager;

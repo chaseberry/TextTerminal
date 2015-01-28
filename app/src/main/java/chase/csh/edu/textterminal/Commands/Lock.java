@@ -4,8 +4,7 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 
-import org.json.JSONObject;
-
+import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Receivers.DeviceAdminReceiver;
 import chase.csh.edu.textterminal.R;
 

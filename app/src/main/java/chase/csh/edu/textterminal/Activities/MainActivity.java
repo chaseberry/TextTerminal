@@ -41,7 +41,7 @@ public class MainActivity extends TextTerminalActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String className = classNames.get(position);
-
+                System.out.println(className);
             }
         });
 

@@ -5,13 +5,11 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
+import chase.csh.edu.textterminal.Command.Command;
+import chase.csh.edu.textterminal.Command.CommandFlag;
 import chase.csh.edu.textterminal.R;
 
 /**

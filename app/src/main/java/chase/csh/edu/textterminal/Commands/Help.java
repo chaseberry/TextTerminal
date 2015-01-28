@@ -2,17 +2,13 @@ package chase.csh.edu.textterminal.Commands;
 
 import android.content.Context;
 
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Enumeration;
 
+import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
-import dalvik.system.DexFile;
 
 public class Help extends Command {
 

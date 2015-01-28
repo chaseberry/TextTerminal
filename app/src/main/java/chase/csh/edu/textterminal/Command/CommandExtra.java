@@ -1,4 +1,4 @@
-package chase.csh.edu.textterminal.Commands;
+package chase.csh.edu.textterminal.Command;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
 public class CommandExtra implements JSONable {
     //boolean, ringtone, int(number),
 
-    public enum Type {
+    public enum Type {//subject to change
         BOOLEAN(0, 0, Boolean.class),
         STRING(1, 0, String.class),
         INT(2, 0, Integer.class);

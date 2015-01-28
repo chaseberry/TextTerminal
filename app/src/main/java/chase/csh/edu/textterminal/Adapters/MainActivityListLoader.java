@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
-import chase.csh.edu.textterminal.Commands.Command;
+import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.R;
 import chase.csh.edu.textterminal.Receivers.SmsReceiver;
 

@@ -1,4 +1,4 @@
-package chase.csh.edu.textterminal.Commands;
+package chase.csh.edu.textterminal.Command;
 
 import android.content.Context;
 import android.telephony.SmsManager;
@@ -8,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import chase.csh.edu.textterminal.Managers.SharedPrefManager;

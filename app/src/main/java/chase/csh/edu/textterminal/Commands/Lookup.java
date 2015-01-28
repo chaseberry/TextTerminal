@@ -6,10 +6,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +13,8 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import chase.csh.edu.textterminal.Command.Command;
+import chase.csh.edu.textterminal.Command.CommandFlag;
 import chase.csh.edu.textterminal.R;
 
 /**

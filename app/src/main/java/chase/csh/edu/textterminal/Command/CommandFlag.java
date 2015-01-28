@@ -1,4 +1,4 @@
-package chase.csh.edu.textterminal.Commands;
+package chase.csh.edu.textterminal.Command;
 
 import org.json.JSONException;
 import org.json.JSONObject;

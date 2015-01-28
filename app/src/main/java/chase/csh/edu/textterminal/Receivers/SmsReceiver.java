@@ -8,7 +8,7 @@ import android.telephony.SmsMessage;
 
 import java.lang.reflect.Constructor;
 
-import chase.csh.edu.textterminal.Commands.Command;
+import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.Managers.BlackListManager;
 import chase.csh.edu.textterminal.Managers.SharedPrefManager;
