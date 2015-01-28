@@ -158,4 +158,16 @@ public abstract class Command implements JSONable {
         enabled = e;
     }
 
+    /**
+     * Checks the flag to make sure the flag was passed to this request.
+     * This also validates the flag as a valid flag registered for this command
+     * and has not been disabled by the user.
+     *
+     * @param flag The flag to check
+     * @return Whether the flag is correctly used
+     */
+    protected boolean canUseFlag(String flag) {
+        return flags.contains(flag) && commandFlags.get(flag) != null && commandFlags.get(flag).isFlagEnabled();
+    }
+
 }
