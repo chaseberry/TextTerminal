@@ -86,7 +86,7 @@ public class Alert extends Command {
 
     @Override
     public ArrayList<CommandFlag> getFlags() {
-        ArrayList<CommandFlag> flags = new ArrayList<CommandFlag>(1);//Number of flags
+        ArrayList<CommandFlag> flags = new ArrayList<>(1);//Number of flags
         if (commandFlags.get("-f") != null) {
             flags.add(commandFlags.get("-f"));//Was this flag loaded before?
         } else {
