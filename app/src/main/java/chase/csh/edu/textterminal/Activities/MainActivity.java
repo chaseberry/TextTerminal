@@ -4,6 +4,8 @@ package chase.csh.edu.textterminal.Activities;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.io.IOException;
@@ -20,30 +22,28 @@ import dalvik.system.DexFile;
 public class MainActivity extends TextTerminalActivity {
 
     public static final String FIRSTRUN = "FIRST_RUN";
+    private ListView mainListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPrefManager.loadSharedPrefs(this);
         setContentView(R.layout.main_activity_layout);
-        ArrayList<String> classNames = new ArrayList<>();
-        try {
-            DexFile df = new DexFile(getPackageCodePath());
-            for (Enumeration<String> iter = df.entries(); iter.hasMoreElements(); ) {
-                String s = iter.nextElement();
-                if (s.contains(".Commands") && !s.contains("$") && !s.contains(".Commands.Command")) {
-                    classNames.add(s);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        final ArrayList<String> classNames = Functions.getCommandClassNames(this);
         if (classNames.isEmpty()) {
             //failed;
         }
         Collections.sort(classNames);
         MainActivityListLoader loader = new MainActivityListLoader(this, classNames);
-        ((ListView) findViewById(R.id.main_activity_list_view)).setAdapter(loader);
+        mainListView = ((ListView) findViewById(R.id.main_activity_list_view));
+        mainListView.setAdapter(loader);
+        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String className = classNames.get(position);
+
+            }
+        });
 
         if (SharedPrefManager.loadBoolean(FIRSTRUN, true)) {
             Functions.displayAdminDialog(this);
