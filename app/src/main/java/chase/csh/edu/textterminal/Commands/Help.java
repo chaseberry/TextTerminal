@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 
+import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
 import dalvik.system.DexFile;
 
@@ -20,18 +21,7 @@ public class Help extends Command {
     }
 
     public String getCommands() {
-        ArrayList<String> classNames = new ArrayList<String>();
-        try {
-            DexFile df = new DexFile(parent.getPackageCodePath());
-            for (Enumeration<String> iter = df.entries(); iter.hasMoreElements(); ) {
-                String s = iter.nextElement();
-                if (s.contains(".Commands") && !s.contains("$") && !s.contains(".Commands.Command") && !s.contains("Help")) {
-                    classNames.add(s.replace("chase.csh.edu.textterminal.Commands.", ""));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ArrayList<String> classNames = Functions.getCommandClassNames(parent);
         if (classNames.isEmpty()) {
             //failed;
         }
