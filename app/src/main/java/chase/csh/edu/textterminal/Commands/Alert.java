@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import chase.csh.edu.textterminal.R;
 
@@ -84,8 +85,14 @@ public class Alert extends Command {
     }
 
     @Override
-    public CommandFlag[] getFlags() {
-        return new CommandFlag[]{new CommandFlag("-f", "force", "forces the alert to override volume settings")};
+    public ArrayList<CommandFlag> getFlags() {
+        ArrayList<CommandFlag> flags = new ArrayList<CommandFlag>(1);//Number of flags
+        if (commandFlags.get("-f") != null) {
+            flags.add(commandFlags.get("-f"));//Was this flag loaded before?
+        } else {
+            flags.add(new CommandFlag("-f", "force", "forces the alert to override volume settings"));
+        }
+        return flags;
     }
 
 }

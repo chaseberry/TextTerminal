@@ -27,6 +27,7 @@ public class CommandFlag implements JSONable {
         flagDescription = obj.checkAndGetString(null, FLAG_DESCRIPTION_KEY);
     }
 
+    //Constructor to create the flag for first run
     public CommandFlag(String flag, String flagName, String flagDescription) {
         this.flag = flag;
         this.flagName = flagName;

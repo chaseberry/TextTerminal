@@ -22,7 +22,6 @@ public abstract class Command implements JSONable {
     public static final String KEY_FLAGS = "commandFlags";
     public static final String KEY_EXTRAS = "commandExtras";
 
-
     private final String name;//Display purposes
     private final int iconId;
     protected Context parent;
@@ -32,8 +31,8 @@ public abstract class Command implements JSONable {
 
     //Command data custom holders
     private boolean enabled = false;
-    private HashMap<String, CommandFlag> commandFlags;
-    private HashMap<String, CommandExtra> commandExtras;
+    protected HashMap<String, CommandFlag> commandFlags;//Hash-map for use when command runs. Maps the incoming flag to the data
+    protected HashMap<String, CommandExtra> commandExtras;//Hash-map for use when command runs. Maps the extra data to the command
     //End command data custom holders
 
     public Command(Context c, String name, int iconId, String[] values, String phone) {
@@ -59,6 +58,7 @@ public abstract class Command implements JSONable {
             JSONArray commandFlagArray = obj.checkAndGetJSONArray(null, KEY_FLAGS);
             if (commandFlagArray != null) {
                 for (int z = 0; z < commandFlagArray.length(); z++) {
+                    //Load the flags from the JSON, includes updated values.
                     CommandFlag flag = new CommandFlag(JSONWrapper.parseJSON(commandFlagArray.getString(z)));
                     commandFlags.put(flag.getFlag(), flag);
                 }
@@ -93,9 +93,13 @@ public abstract class Command implements JSONable {
 
     public abstract String getHelpMessage();
 
-    public abstract String[] getParams();
+    public String[] getParams() {
+        return null;
+    }
 
-    public abstract CommandFlag[] getFlags();
+    public ArrayList<CommandFlag> getFlags() {
+        return null;
+    }
 
     private boolean canExecute() {
         return enabled;
@@ -124,7 +128,7 @@ public abstract class Command implements JSONable {
         JSONObject obj = new JSONObject();
         try {
             obj.put(KEY_ENABLED, enabled);
-            CommandFlag[] flags = getFlags();
+            ArrayList<CommandFlag> flags = getFlags();
             if (flags != null) {
                 JSONArray flagArray = new JSONArray();
                 for (CommandFlag flag : flags) {

@@ -24,6 +24,8 @@ import chase.csh.edu.textterminal.R;
  */
 public class Lookup extends Command {
 
+    private final String ALL_FLAG = "-a";
+
     public Lookup(Context c, String[] parts, String phone) {
         super(c, "Lookup", R.drawable.ic_contacts_white_48dp, parts, phone);
     }
@@ -76,8 +78,14 @@ public class Lookup extends Command {
     }
 
     @Override
-    public CommandFlag[] getFlags() {
-        return new CommandFlag[]{new CommandFlag("-a", "all", "sends all values found instead of just the first")};
+    public ArrayList<CommandFlag> getFlags() {
+        ArrayList<CommandFlag> flags = new ArrayList<>(1);
+        if (commandFlags.get(ALL_FLAG) != null) {
+            flags.add(commandFlags.get(ALL_FLAG));
+        } else {
+            flags.add(new CommandFlag(ALL_FLAG, "All", "Sends all values found instead of just the first"));
+        }
+        return flags;
     }
 
     private ArrayList<String> lookup(String num) {

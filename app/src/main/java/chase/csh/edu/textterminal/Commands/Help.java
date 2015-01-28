@@ -52,14 +52,4 @@ public class Help extends Command {
         return "Displays the help message";
     }
 
-    @Override
-    public String[] getParams() {
-        return new String[0];
-    }
-
-    @Override
-    public CommandFlag[] getFlags() {
-        return null;
-    }
-
 }

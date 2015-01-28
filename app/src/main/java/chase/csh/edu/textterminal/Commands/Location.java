@@ -7,15 +7,15 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 import chase.csh.edu.textterminal.R;
 
 public class Location extends Command {
 
     GoogleApiClient locationClient;
+    private final String ACCURACY_FLAG = "-a";
+
 
     GoogleApiClient.ConnectionCallbacks connectionListener = new GoogleApiClient.ConnectionCallbacks() {
 
@@ -78,8 +78,14 @@ public class Location extends Command {
     }
 
     @Override
-    public CommandFlag[] getFlags() {
-        return new CommandFlag[]{new CommandFlag("-a", "Accuracy", "Sends the accuracy back with the location.")};
+    public ArrayList<CommandFlag> getFlags() {
+        ArrayList<CommandFlag> flags = new ArrayList<>(1);
+        if (commandFlags.get(ACCURACY_FLAG) != null) {
+            flags.add(commandFlags.get(ACCURACY_FLAG));
+        } else {
+            flags.add(new CommandFlag(ACCURACY_FLAG, "Accuracy", "This will return the accuracy with the location"));
+        }
+        return flags;
     }
 
 }

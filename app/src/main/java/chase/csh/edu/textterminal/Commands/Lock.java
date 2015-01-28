@@ -34,14 +34,4 @@ public class Lock extends Command {
         return "This will lock this phone if unlocked.";
     }
 
-    @Override
-    public String[] getParams() {
-        return new String[0];
-    }
-
-    @Override
-    public CommandFlag[] getFlags() {
-        return null;
-    }
-
 }
