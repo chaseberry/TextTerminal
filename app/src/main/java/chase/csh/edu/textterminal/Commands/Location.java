@@ -81,8 +81,9 @@ public class Location extends Command {
     public ArrayList<CommandFlag> getFlags() {
         ArrayList<CommandFlag> flags = new ArrayList<>(1);
         if (commandFlags.get(ACCURACY_FLAG) != null) {
-            flags.add(commandFlags.get(ACCURACY_FLAG));
+            flags.add(commandFlags.get(ACCURACY_FLAG));//Flag exists and was loaded in from memory
         } else {
+            //Flag was not loaded in from memory (IE first run, so it must be created)
             flags.add(new CommandFlag(ACCURACY_FLAG, "Accuracy", "This will return the accuracy with the location"));
         }
         return flags;
