@@ -22,7 +22,7 @@ public abstract class Command implements JSONable {
     public static final String KEY_FLAGS = "commandFlags";
     public static final String KEY_EXTRAS = "commandExtras";
 
-    private final String name;//Display purposes
+    private final String name;//Display/loading purposes
     private final int iconId;
     protected Context parent;
     protected ArrayList<String> params;
