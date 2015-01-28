@@ -59,11 +59,7 @@ public class Help extends Command {
 
     @Override
     public CommandFlag[] getFlags() {
-        return new CommandFlag[0];
+        return null;
     }
 
-    @Override
-    protected JSONObject addExtras(JSONObject obj) {
-        return obj;
-    }
 }

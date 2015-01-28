@@ -3,20 +3,24 @@ package chase.csh.edu.textterminal.Commands;
 import android.content.Context;
 import android.telephony.SmsManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import chase.csh.edu.textterminal.Managers.SharedPrefManager;
 import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONObjectWrapper;
+import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
 
 public abstract class Command implements JSONable {
 
     public static final String SECURITY_CODE_KEY = "securityKey";
-    public static final String KEY_ENABLED = "enabled";
-    public static final String KEY_FLAGS = "allowedFlags";
+    public static final String KEY_ENABLED = "commandEnabled";
+    public static final String KEY_FLAGS = "commandFlags";
+    public static final String KEY_EXTRAS = "commandExtras";
 
 
     private final String name;//Display purposes
@@ -28,7 +32,8 @@ public abstract class Command implements JSONable {
 
     //Command data custom holders
     private boolean enabled = false;
-    private ArrayList<String> allowedFlags;
+    private HashMap<String, CommandFlag> commandFlags;
+    private HashMap<String, CommandExtra> commandExtras;
     //End command data custom holders
 
     public Command(Context c, String name, int iconId, String[] values, String phone) {
@@ -51,7 +56,20 @@ public abstract class Command implements JSONable {
         try {
             JSONObjectWrapper obj = new JSONObjectWrapper(SharedPrefManager.loadString(getName(), null));
             enabled = obj.checkAndGetBoolean(false, KEY_ENABLED);
-            allowedFlags = new ArrayList<String>(Arrays.asList(obj.checkAndGetStringArray(new String[0], KEY_FLAGS)));
+            JSONArray commandFlagArray = obj.checkAndGetJSONArray(null, KEY_FLAGS);
+            if (commandFlagArray != null) {
+                for (int z = 0; z < commandFlagArray.length(); z++) {
+                    CommandFlag flag = new CommandFlag(JSONWrapper.parseJSON(commandFlagArray.getString(z)));
+                    commandFlags.put(flag.getFlag(), flag);
+                }
+            }
+            JSONArray commandExtraArray = obj.checkAndGetJSONArray(null, KEY_EXTRAS);
+            if (commandExtraArray != null) {
+                for (int z = 0; z < commandExtraArray.length(); z++) {
+                    CommandExtra extra = new CommandExtra(JSONWrapper.parseJSON(commandExtraArray.getString(z)));
+                    commandExtras.put(extra.getKey(), extra);
+                }
+            }
         } catch (Exception e) {
             enabled = false;//Make it not able to fun.
             //Something couldn't load
@@ -98,13 +116,26 @@ public abstract class Command implements JSONable {
         return iconId;
     }
 
-    protected abstract JSONObject addExtras(JSONObject obj);
+    protected JSONArray getExtras() {
+        return null;
+    }
 
     public JSONObject getJSONClass() {
         JSONObject obj = new JSONObject();
-        obj = addExtras(obj);
         try {
             obj.put(KEY_ENABLED, enabled);
+            CommandFlag[] flags = getFlags();
+            if (flags != null) {
+                JSONArray flagArray = new JSONArray();
+                for (CommandFlag flag : flags) {
+                    flagArray.put(flag.getJSONClass());
+                }
+                obj.put(KEY_FLAGS, flagArray);
+            }
+            JSONArray extras = getExtras();
+            if (extras != null) {
+                obj.put(KEY_EXTRAS, extras);
+            }
         } catch (JSONException e) {
             //won't happen
         }

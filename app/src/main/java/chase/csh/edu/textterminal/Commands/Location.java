@@ -82,13 +82,4 @@ public class Location extends Command {
         return new CommandFlag[]{new CommandFlag("-a", "Accuracy", "Sends the accuracy back with the location.")};
     }
 
-    @Override
-    protected JSONObject addExtras(JSONObject obj) {
-        try {
-            obj.put(KEY_FLAGS, new JSONArray().put("-a"));
-        } catch (JSONException e) {
-
-        }
-        return obj;
-    }
 }

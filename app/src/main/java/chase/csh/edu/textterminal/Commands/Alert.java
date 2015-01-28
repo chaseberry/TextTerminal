@@ -88,13 +88,4 @@ public class Alert extends Command {
         return new CommandFlag[]{new CommandFlag("-f", "force", "forces the alert to override volume settings")};
     }
 
-    @Override
-    protected JSONObject addExtras(JSONObject obj) {
-        try {
-            obj.put(KEY_FLAGS, new JSONArray().put("-f"));
-        } catch (JSONException e) {
-
-        }
-        return obj;
-    }
 }

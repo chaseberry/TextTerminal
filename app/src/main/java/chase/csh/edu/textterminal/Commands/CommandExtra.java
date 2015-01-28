@@ -11,12 +11,16 @@ import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
 public class CommandExtra implements JSONable {
 
     public static final String NAME_KEY = "name";
+    public static final String KEY_KEY = "key";
+    public static final String DESCRIPTION_KEY = "description";
     public static final String VALUE_KEY = "value";
     public static final String TYPE_KEY = "type";
 
     private String name;
     private Object value;
     private Class type;
+    private String description;
+    private String key;
 
     public CommandExtra(JSONWrapper jsonObj) {
         name = jsonObj.checkAndGetString(null, NAME_KEY);
@@ -52,5 +56,13 @@ public class CommandExtra implements JSONable {
 
         }
         return obj;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getKey() {
+        return key;
     }
 }
