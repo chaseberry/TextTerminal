@@ -56,7 +56,7 @@ public class MainActivityListLoader extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         Holder holder = new Holder();
         final Command command = commands.get(i);
         if (view == null) {
@@ -83,7 +83,12 @@ public class MainActivityListLoader extends BaseAdapter {
                 c.save();
             }
         });
-
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println(commands.get(i).getName());
+            }
+        });
         return view;
     }
 

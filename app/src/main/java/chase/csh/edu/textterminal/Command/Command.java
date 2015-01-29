@@ -42,6 +42,8 @@ public abstract class Command implements JSONable {
         SharedPrefManager.loadSharedPrefs(c);
         params = new ArrayList<>();
         flags = new ArrayList<>();
+        commandFlags = new HashMap<>();
+        commandExtras = new HashMap<>();
         if (values != null) {
             for (String string : values) {
                 if (string.charAt(0) == '-') {

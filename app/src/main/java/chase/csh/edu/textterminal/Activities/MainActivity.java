@@ -44,6 +44,17 @@ public class MainActivity extends TextTerminalActivity {
                 System.out.println(className);
             }
         });
+        mainListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("Item Selected");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         if (SharedPrefManager.loadBoolean(FIRSTRUN, true)) {
             Functions.displayAdminDialog(this);
