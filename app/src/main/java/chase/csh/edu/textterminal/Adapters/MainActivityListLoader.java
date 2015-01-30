@@ -86,7 +86,7 @@ public class MainActivityListLoader extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(commands.get(i).getName());
+                System.out.println(command.getClass());
             }
         });
         return view;

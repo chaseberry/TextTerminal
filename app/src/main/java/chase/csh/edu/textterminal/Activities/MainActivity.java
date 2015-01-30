@@ -37,13 +37,6 @@ public class MainActivity extends TextTerminalActivity {
         MainActivityListLoader loader = new MainActivityListLoader(this, classNames);
         mainListView = ((ListView) findViewById(R.id.main_activity_list_view));
         mainListView.setAdapter(loader);
-        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String className = classNames.get(position);
-                System.out.println(className);
-            }
-        });
         mainListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
