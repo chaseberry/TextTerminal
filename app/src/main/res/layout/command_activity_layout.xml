@@ -56,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/command_activity_parameters_list_view_empty_textview"
-                    android:text="No flags" />
+                    android:text="No parameters" />
             </LinearLayout>
 
             <ImageView style="@style/horizontal_divider" />
@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/command_activity_extras_list_view_empty_textview"
-                    android:text="No flags" />
+                    android:text="No extras" />
             </LinearLayout>
 
 

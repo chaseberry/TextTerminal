@@ -72,7 +72,7 @@ public class Lookup extends Command {
 
     @Override
     public String[] getParams() {
-        return new String[]{"The key to lookup."};
+        return new String[]{"The name or number to lookup"};
     }
 
     @Override
