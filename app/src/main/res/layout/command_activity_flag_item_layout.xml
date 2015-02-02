@@ -22,7 +22,6 @@
         android:paddingStart="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16sp"
-        android:text="-f"
         android:id="@+id/command_activity_flag_item_title" />
 
     <LinearLayout
