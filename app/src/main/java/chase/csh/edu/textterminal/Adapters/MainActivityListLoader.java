@@ -85,9 +85,8 @@ public class MainActivityListLoader extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(command.getClass());
                 parent.startActivity(new Intent(parent, CommandActivity.class)
-                        .putExtra("command", command.getClass()));
+                        .putExtra("command", command.getClass().getName()));
             }
         });
         return view;
