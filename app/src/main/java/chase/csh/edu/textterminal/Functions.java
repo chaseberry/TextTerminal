@@ -9,11 +9,15 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
 import chase.csh.edu.textterminal.BCrypt.BCrypt;
+import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Receivers.DeviceAdminReceiver;
+import chase.csh.edu.textterminal.Receivers.SmsReceiver;
 import dalvik.system.DexFile;
 
 /**
@@ -85,6 +89,19 @@ public class Functions {
             e.printStackTrace();
         }
         return classNames;
+    }
+
+    public static Command loadCommand(String commandName, Context c, String[] parts, String fromNum) {
+        try {
+            Class<?> commandClass = SmsReceiver.class.getClassLoader().loadClass(commandName);
+            Constructor constructor = commandClass.getDeclaredConstructor(Context.class, String[].class, String.class);
+            constructor.setAccessible(true);
+            return (Command) constructor.newInstance(c, parts, fromNum);
+        } catch (ClassNotFoundException e) {
+
+        } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+        }
+        return null;
     }
 
 }

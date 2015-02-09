@@ -69,15 +69,12 @@ public class SmsReceiver extends BroadcastReceiver {
                         //Parse message
                         comm = Character.toUpperCase(comm.charAt(0)) + comm.substring(1);
                         String className = "chase.csh.edu.textterminal.Commands." + comm;
-
                         System.out.println(className);
-
-                        Class<?> commandClass = SmsReceiver.class.getClassLoader().loadClass(className);
-                        Constructor c = commandClass.getDeclaredConstructor(Context.class, String[].class, String.class);
-                        c.setAccessible(true);
-                        Command command = (Command) c.newInstance(context, bodyParts, phoneNumber);
+                        Command command = Functions.loadCommand(className, context, bodyParts, phoneNumber);
+                        if (command != null) {
+                            command.execute();//TODO -- log the value of this -- fromNum
+                        }
                         //Log - command found - executing - fromNum
-                        command.execute();//TODO -- log the value of this -- fromNum
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

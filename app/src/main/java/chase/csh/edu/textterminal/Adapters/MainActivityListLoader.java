@@ -2,6 +2,7 @@ package chase.csh.edu.textterminal.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import android.widget.TextView;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
+import chase.csh.edu.textterminal.Activities.CommandActivity;
 import chase.csh.edu.textterminal.Command.Command;
+import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
 import chase.csh.edu.textterminal.Receivers.SmsReceiver;
 
@@ -23,20 +26,16 @@ public class MainActivityListLoader extends BaseAdapter {
 
     ArrayList<Command> commands = new ArrayList<Command>();
     LayoutInflater inflater;
+    Context parent;
 
     public MainActivityListLoader(Context c, ArrayList<String> classNames) {
         inflater = ((Activity) c).getLayoutInflater();
+        parent = c;
         for (String s : classNames) {
-            try {
-                Class<?> commandClass = SmsReceiver.class.getClassLoader().loadClass(s);
-                Constructor constructor = commandClass.getDeclaredConstructor(Context.class, String[].class, String.class);
-                constructor.setAccessible(true);
-                Command command = (Command) constructor.newInstance(c, null, null);
+            Command command = Functions.loadCommand(s, c, null, null);
+            if (command != null) {
                 commands.add(command);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-
         }
     }
 
@@ -87,6 +86,8 @@ public class MainActivityListLoader extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 System.out.println(command.getClass());
+                parent.startActivity(new Intent(parent, CommandActivity.class)
+                        .putExtra("command", command.getClass()));
             }
         });
         return view;
