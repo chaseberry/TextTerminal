@@ -34,16 +34,18 @@ public abstract class Command implements JSONable {
     protected HashMap<String, CommandExtra> commandExtras;//Hash-map for use when command runs. Maps the extra data to the command
     //End command data custom holders
 
-    public Command(Context c, String name, int iconId, String[] values, String phone) {
+    public Command(Context context, String name, int iconId, String[] values, String phone) {
+        //Define vars on startup
         this.name = name;
-        parent = c;
         this.iconId = iconId;
+        parent = context;
         fromNumber = phone;
-        SharedPrefManager.loadSharedPrefs(c);
         params = new ArrayList<>();
         flags = new ArrayList<>();
         commandFlags = new HashMap<>();
         commandExtras = new HashMap<>();
+
+        SharedPrefManager.loadSharedPrefs(context);
         if (values != null) {
             for (String string : values) {
                 if (string.charAt(0) == '-') {
