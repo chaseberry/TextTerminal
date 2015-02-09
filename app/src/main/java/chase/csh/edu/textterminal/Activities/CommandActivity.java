@@ -32,4 +32,9 @@ public class CommandActivity extends TextTerminalActivity {
             finish();
         }
     }
+
+    private void loadFlags(){
+        
+    }
+
 }

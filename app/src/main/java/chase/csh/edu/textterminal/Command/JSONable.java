@@ -7,6 +7,6 @@ import org.json.JSONObject;
  */
 public interface JSONable {
 
-    public JSONObject getJSONClass();
+    public JSONObject getJSONRepresentation();
 
 }

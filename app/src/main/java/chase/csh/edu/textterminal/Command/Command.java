@@ -125,7 +125,7 @@ public abstract class Command implements JSONable {
         return null;
     }
 
-    public JSONObject getJSONClass() {
+    public JSONObject getJSONRepresentation() {
         JSONObject obj = new JSONObject();
         try {
             obj.put(KEY_ENABLED, enabled);
@@ -133,7 +133,7 @@ public abstract class Command implements JSONable {
             if (flags != null) {
                 JSONArray flagArray = new JSONArray();
                 for (CommandFlag flag : flags) {
-                    flagArray.put(flag.getJSONClass());
+                    flagArray.put(flag.getJSONRepresentation());
                 }
                 obj.put(KEY_FLAGS, flagArray);
             }
@@ -148,7 +148,7 @@ public abstract class Command implements JSONable {
     }
 
     public void save() {
-        SharedPrefManager.saveString(getName(), getJSONClass().toString());
+        SharedPrefManager.saveString(getName(), getJSONRepresentation().toString());
     }
 
     public boolean isEnabled() {

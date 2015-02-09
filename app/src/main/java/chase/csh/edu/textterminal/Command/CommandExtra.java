@@ -99,7 +99,7 @@ public class CommandExtra implements JSONable {
     }
 
     @Override
-    public JSONObject getJSONClass() {
+    public JSONObject getJSONRepresentation() {
         JSONObject obj = new JSONObject();
         try {
             obj.put(NAME_KEY, name);

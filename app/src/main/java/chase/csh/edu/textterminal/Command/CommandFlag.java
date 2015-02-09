@@ -36,7 +36,7 @@ public class CommandFlag implements JSONable {
     }
 
     @Override
-    public JSONObject getJSONClass() {
+    public JSONObject getJSONRepresentation() {
         JSONObject obj = new JSONObject();
         try {
             obj.put(FLAG_KEY, flag);
