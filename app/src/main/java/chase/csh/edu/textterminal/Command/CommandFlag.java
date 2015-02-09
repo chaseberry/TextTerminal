@@ -63,4 +63,8 @@ public class CommandFlag implements JSONable {
     public String getFlagName() {
         return flagName;
     }
+
+    public void setFlagEnabled(boolean enabled) {
+        flagEnabled = enabled;
+    }
 }
