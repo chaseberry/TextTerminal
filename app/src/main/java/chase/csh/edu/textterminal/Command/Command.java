@@ -100,7 +100,7 @@ public abstract class Command implements JSONable {
         return null;
     }
 
-    public ArrayList<CommandFlag> getFlags() {
+    protected ArrayList<CommandFlag> getFlags() {
         return null;
     }
 
@@ -159,6 +159,10 @@ public abstract class Command implements JSONable {
 
     public void setEnabled(boolean e) {
         enabled = e;
+    }
+
+    public ArrayList<CommandFlag> getCommandFlags() {
+        return new ArrayList<CommandFlag>(commandFlags.values());
     }
 
     /**

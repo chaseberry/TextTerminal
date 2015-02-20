@@ -80,7 +80,7 @@ public class Location extends Command {
     }
 
     @Override
-    public ArrayList<CommandFlag> getFlags() {
+    protected ArrayList<CommandFlag> getFlags() {
         ArrayList<CommandFlag> flags = new ArrayList<>(1);
         if (commandFlags.get(ACCURACY_FLAG) != null) {
             flags.add(commandFlags.get(ACCURACY_FLAG));//Flag exists and was loaded in from memory

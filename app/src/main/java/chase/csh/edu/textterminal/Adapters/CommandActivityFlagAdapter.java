@@ -53,7 +53,7 @@ public class CommandActivityFlagAdapter extends BaseAdapter {
         final CommandFlag flag = flags.get(position);
         if (convertView == null) {
             viewHolder = new FlagViewHolder();
-            convertView = inflater.inflate(R.layout.command_activity_flag_item_layout, null);
+            convertView = inflater.inflate(R.layout.command_activity_flag_item_layout, parent);
             viewHolder.enabled = (Switch) convertView.findViewById(R.id.command_activity_flag_item_switch);
             viewHolder.title = (TextView) convertView.findViewById(R.id.command_activity_flag_item_title);
             viewHolder.name = (TextView) convertView.findViewById(R.id.command_activity_flag_item_name);
@@ -74,8 +74,7 @@ public class CommandActivityFlagAdapter extends BaseAdapter {
                 flag.setFlagEnabled(isChecked);
             }
         });
-
-        return null;
+        return convertView;
     }
 
     static class FlagViewHolder {

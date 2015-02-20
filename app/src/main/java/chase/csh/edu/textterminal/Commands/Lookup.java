@@ -76,7 +76,7 @@ public class Lookup extends Command {
     }
 
     @Override
-    public ArrayList<CommandFlag> getFlags() {
+    protected ArrayList<CommandFlag> getFlags() {
         ArrayList<CommandFlag> flags = new ArrayList<>(1);
         if (commandFlags.get(ALL_FLAG) != null) {
             flags.add(commandFlags.get(ALL_FLAG));
