@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import chase.csh.edu.textterminal.Adapters.CommandActivityFlagAdapter;
+import chase.csh.edu.textterminal.Adapters.CommandActivityParameterAdapter;
 import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
@@ -35,6 +36,7 @@ public class CommandActivity extends TextTerminalActivity {
             finish();
         }
         loadFlags();
+        loadParameters();
     }
 
     @Override
@@ -44,6 +46,9 @@ public class CommandActivity extends TextTerminalActivity {
     }
 
     private void loadFlags() {
+        if (command.getCommandFlags() == null || command.getCommandFlags().size() == 0) {
+            return;
+        }
         CommandActivityFlagAdapter flagAdapter = new CommandActivityFlagAdapter(CommandActivity.this, command.getCommandFlags());
         flagListView.removeAllViews();
         for (int z = 0; z < flagAdapter.getCount(); z++) {
@@ -53,6 +58,19 @@ public class CommandActivity extends TextTerminalActivity {
             }
         }
     }
-   
+
+    private void loadParameters() {
+        if (command.getParams() == null || command.getParams().length == 0) {
+            return;
+        }
+        CommandActivityParameterAdapter parameterAdapter = new CommandActivityParameterAdapter(CommandActivity.this, command.getParams());
+        parameterListView.removeAllViews();
+        for (int z = 0; z < parameterAdapter.getCount(); z++) {
+            View v = parameterAdapter.getView(z, null, null);
+            if (v != null) {
+                parameterListView.addView(v);
+            }
+        }
+    }
 
 }

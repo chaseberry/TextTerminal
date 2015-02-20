@@ -75,11 +75,6 @@ public class Location extends Command {
     }
 
     @Override
-    public String[] getParams() {
-        return new String[0];
-    }
-
-    @Override
     protected ArrayList<CommandFlag> getFlags() {
         ArrayList<CommandFlag> flags = new ArrayList<>(1);
         if (commandFlags.get(ACCURACY_FLAG) != null) {

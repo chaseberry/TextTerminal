@@ -80,11 +80,6 @@ public class Alert extends Command {
     }
 
     @Override
-    public String[] getParams() {
-        return new String[0];
-    }
-
-    @Override
     public ArrayList<CommandFlag> getFlags() {
         ArrayList<CommandFlag> flags = new ArrayList<>(1);//Number of flags
         if (commandFlags.get(FORCE_FLAG) != null) {
