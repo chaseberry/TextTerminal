@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import chase.csh.edu.textterminal.R;
 
 /**
  * Created by chase on 2/23/15.
@@ -40,7 +43,11 @@ public class CommandParameterAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        return null;
+        String param = parameters[position];
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.command_parameter_text_view, parent);
+        }
+        ((TextView) convertView).setText(param);
+        return convertView;
     }
 }

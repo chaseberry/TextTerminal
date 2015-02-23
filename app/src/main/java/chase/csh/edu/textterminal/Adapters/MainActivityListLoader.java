@@ -2,14 +2,13 @@ package chase.csh.edu.textterminal.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
-import android.widget.ExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -20,7 +19,7 @@ import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
 
 
-public class MainActivityListLoader implements ExpandableListAdapter {
+public class MainActivityListLoader extends BaseAdapter {
 
     ArrayList<Command> commands = new ArrayList<Command>();
     LayoutInflater inflater;
@@ -37,18 +36,22 @@ public class MainActivityListLoader implements ExpandableListAdapter {
         }
     }
 
+    @Override
     public int getCount() {
         return commands.size();
     }
 
+    @Override
     public Object getItem(int i) {
         return commands.get(i);
     }
 
+    @Override
     public long getItemId(int i) {
         return i;
     }
 
+    @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         Holder holder = new Holder();
         final Command command = commands.get(i);
@@ -58,6 +61,7 @@ public class MainActivityListLoader implements ExpandableListAdapter {
             holder.enabled = (Switch) view.findViewById(R.id.main_activity_list_view_item_switch);
             holder.description = (TextView) view.findViewById(R.id.main_activity_list_view_item_description);
             holder.icon = (ImageView) view.findViewById(R.id.main_activity_list_view_item_icon);
+            holder.parameters = (LinearLayout) view.findViewById(R.id.command_child_parameters);
             view.setTag(holder);
         } else {
             holder = (Holder) view.getTag();
@@ -76,97 +80,20 @@ public class MainActivityListLoader implements ExpandableListAdapter {
                 c.save();
             }
         });
+
+        String[] params = command.getParams();
+        if (params != null && params.length > 0) {
+            holder.parameters.removeAllViews();
+            CommandParameterAdapter parameterLoader = new CommandParameterAdapter(params, parent);
+            for (int z = 0; z < parameterLoader.getCount(); z++) {
+                View v = parameterLoader.getView(z, null, null);
+                if (v != null) {
+                    holder.parameters.addView(v);
+                }
+            }
+        }
+
         return view;
-    }
-
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-
-    }
-
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
-
-    }
-
-    @Override
-    public int getGroupCount() {
-        return getCount();
-    }
-
-    @Override
-    public int getChildrenCount(int groupPosition) {
-        return 1;
-    }
-
-    @Override
-    public Object getGroup(int groupPosition) {
-        return getItem(groupPosition);
-    }
-
-    @Override
-    public Object getChild(int groupPosition, int childPosition) {
-        return null;
-    }
-
-    @Override
-    public long getGroupId(int groupPosition) {
-        return getItemId(groupPosition);
-    }
-
-    @Override
-    public long getChildId(int groupPosition, int childPosition) {
-        return 0;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return true;
-    }
-
-    @Override
-    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        return getView(groupPosition, convertView, parent);
-    }
-
-    @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        return null;
-    }
-
-    @Override
-    public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
-    }
-
-    @Override
-    public boolean areAllItemsEnabled() {
-        return true;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return commands.isEmpty();
-    }
-
-    @Override
-    public void onGroupExpanded(int groupPosition) {
-        System.out.println("Expanded: " + commands.get(groupPosition).getName());
-    }
-
-    @Override
-    public void onGroupCollapsed(int groupPosition) {
-        System.out.println("Collopsed: " + commands.get(groupPosition).getName());
-    }
-
-    @Override
-    public long getCombinedChildId(long groupId, long childId) {
-        return childId;
-    }
-
-    @Override
-    public long getCombinedGroupId(long groupId) {
-        return groupId;
     }
 
     static class Holder {
@@ -174,6 +101,7 @@ public class MainActivityListLoader implements ExpandableListAdapter {
         Switch enabled;
         TextView description;
         ImageView icon;
+        LinearLayout parameters;
     }
 
 }

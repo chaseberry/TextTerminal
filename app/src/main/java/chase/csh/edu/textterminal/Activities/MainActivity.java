@@ -24,7 +24,7 @@ import dalvik.system.DexFile;
 public class MainActivity extends TextTerminalActivity {
 
     public static final String FIRSTRUN = "FIRST_RUN";
-    private ExpandableListView mainListView;
+    private ListView mainListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MainActivity extends TextTerminalActivity {
         }
         Collections.sort(classNames);
         MainActivityListLoader loader = new MainActivityListLoader(this, classNames);
-        mainListView = (ExpandableListView) findViewById(R.id.main_activity_list_view);
+        mainListView = (ListView) findViewById(R.id.main_activity_list_view);
         mainListView.setAdapter(loader);
         if (SharedPrefManager.loadBoolean(FIRSTRUN, true)) {
             Functions.displayAdminDialog(this);
