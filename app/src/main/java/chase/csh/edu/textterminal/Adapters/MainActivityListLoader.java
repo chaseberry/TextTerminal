@@ -2,7 +2,6 @@ package chase.csh.edu.textterminal.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,11 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 
-import chase.csh.edu.textterminal.Activities.CommandActivity;
 import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
-import chase.csh.edu.textterminal.Receivers.SmsReceiver;
 
 
 public class MainActivityListLoader extends BaseAdapter {
@@ -80,13 +76,6 @@ public class MainActivityListLoader extends BaseAdapter {
                 Command c = ((Command) compoundButton.getTag());
                 c.setEnabled(b);
                 c.save();
-            }
-        });
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                parent.startActivity(new Intent(parent, CommandActivity.class)
-                        .putExtra("command", command.getClass().getName()));
             }
         });
         return view;
