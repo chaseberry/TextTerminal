@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 import java.io.IOException;
@@ -22,7 +24,7 @@ import dalvik.system.DexFile;
 public class MainActivity extends TextTerminalActivity {
 
     public static final String FIRSTRUN = "FIRST_RUN";
-    private ListView mainListView;
+    private ExpandableListView mainListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +37,9 @@ public class MainActivity extends TextTerminalActivity {
         }
         Collections.sort(classNames);
         MainActivityListLoader loader = new MainActivityListLoader(this, classNames);
-        mainListView = ((ListView) findViewById(R.id.main_activity_list_view));
+        mainListView = (ExpandableListView) findViewById(R.id.main_activity_list_view);
         mainListView.setAdapter(loader);
-        mainListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("Item Selected");
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
+        
         if (SharedPrefManager.loadBoolean(FIRSTRUN, true)) {
             Functions.displayAdminDialog(this);
             SharedPrefManager.saveBoolean(FIRSTRUN, false);
