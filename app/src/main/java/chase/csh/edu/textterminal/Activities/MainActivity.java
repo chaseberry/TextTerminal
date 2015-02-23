@@ -39,7 +39,6 @@ public class MainActivity extends TextTerminalActivity {
         MainActivityListLoader loader = new MainActivityListLoader(this, classNames);
         mainListView = (ExpandableListView) findViewById(R.id.main_activity_list_view);
         mainListView.setAdapter(loader);
-        
         if (SharedPrefManager.loadBoolean(FIRSTRUN, true)) {
             Functions.displayAdminDialog(this);
             SharedPrefManager.saveBoolean(FIRSTRUN, false);

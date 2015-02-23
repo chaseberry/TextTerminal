@@ -96,7 +96,7 @@ public class MainActivityListLoader implements ExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -121,7 +121,7 @@ public class MainActivityListLoader implements ExpandableListAdapter {
 
     @Override
     public boolean hasStableIds() {
-        return false;
+        return true;
     }
 
     @Override
@@ -141,12 +141,12 @@ public class MainActivityListLoader implements ExpandableListAdapter {
 
     @Override
     public boolean areAllItemsEnabled() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return commands.isEmpty();
     }
 
     @Override
@@ -161,12 +161,12 @@ public class MainActivityListLoader implements ExpandableListAdapter {
 
     @Override
     public long getCombinedChildId(long groupId, long childId) {
-        return 0;
+        return childId;
     }
 
     @Override
     public long getCombinedGroupId(long groupId) {
-        return 0;
+        return groupId;
     }
 
     static class Holder {
