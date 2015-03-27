@@ -7,15 +7,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:background="?android:selectableItemBackground">
+        android:background="?android:selectableItemBackground"
+        android:clickable="true"
+        android:id="@+id/command">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="match_parent"
             android:paddingLeft="16dp"
             android:paddingStart="16dp"
             android:paddingRight="16dp"
-            android:paddingTop="16sp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             android:layout_alignParentStart="true"
             android:id="@+id/main_activity_list_view_item_icon"
             android:contentDescription="Alt." />
@@ -32,16 +36,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingTop="16dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="16dp"
             android:layout_toRightOf="@id/main_activity_list_view_item_icon"
-            android:layout_toStartOf="@id/main_activity_list_view_item_switch"
-            android:layout_alignTop="@id/main_activity_list_view_item_icon">
+            android:layout_toStartOf="@id/main_activity_list_view_item_switch">
+            <!--android:layout_alignTop="@id/main_activity_list_view_item_icon"-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:layout_alignParentStart="true"
                 android:id="@+id/main_activity_list_view_item_name" />
 
             <TextView
@@ -52,28 +55,28 @@
                 android:id="@+id/main_activity_list_view_item_description" />
         </LinearLayout>
 
-
     </RelativeLayout>
 
     <LinearLayout
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:id="@+id/command_child"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/command_child_parameters"
-            android:orientation="vertical">
+            android:orientation="vertical" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                style="@style/body"
-                android:text="No Parameters" />
-
-        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/command_child_flags"
+            android:orientation="vertical" />
 
     </LinearLayout>
 </LinearLayout>
