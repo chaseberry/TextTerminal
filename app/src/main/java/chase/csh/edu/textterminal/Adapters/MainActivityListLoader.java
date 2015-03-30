@@ -87,6 +87,8 @@ public class MainActivityListLoader extends BaseAdapter {
                 c.save();
             }
         });
+        /*
+
         String[] params = command.getParams();
         holder.parameters.removeAllViews();
         if (params != null && params.length > 0) {
@@ -124,6 +126,8 @@ public class MainActivityListLoader extends BaseAdapter {
                 holder.commandChildLayout.setVisibility(holder.commandChildLayout.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
             }
         });
+
+        */
         return view;
     }
 

@@ -29,9 +29,6 @@
                 android:value="Blacklist" />
         </intent>
     </Preference>
-    <CheckBoxPreference
-        android:title="Logging"
-        android:key="logging" />
     <Preference
         android:title="Enable Device Administrative Features"
         android:key="preference_admin_features" />

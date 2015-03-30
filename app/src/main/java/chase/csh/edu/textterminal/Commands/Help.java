@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.regex.Pattern;
 
 import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Functions;
@@ -22,6 +23,9 @@ public class Help extends Command {
             //failed;
         }
         Collections.sort(classNames);
+        for (int z = 0; z < classNames.size(); z++) {
+            classNames.set(z, classNames.get(z).split(Pattern.quote("."))[5]);
+        }
         return Arrays.toString(classNames.toArray());
     }
 

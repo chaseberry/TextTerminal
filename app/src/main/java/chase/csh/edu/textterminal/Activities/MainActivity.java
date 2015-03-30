@@ -43,6 +43,7 @@ public class MainActivity extends TextTerminalActivity {
             Functions.displayAdminDialog(this);
             SharedPrefManager.saveBoolean(FIRSTRUN, false);
         }
+        
     }
 
     @Override

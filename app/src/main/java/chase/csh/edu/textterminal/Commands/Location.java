@@ -29,7 +29,7 @@ public class Location extends Command {
                 if (canUseFlag(ACCURACY_FLAG)) {
                     location += " within " + l.getAccuracy() + "m";
                 }
-                sendMessage("Location is " + location, fromNumber);
+                sendMessage("This device is located at " + location, fromNumber);
                 locationClient.disconnect();
                 locationClient = null;
             }
