@@ -15,6 +15,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.DragEvent;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -152,4 +154,14 @@ public class PhoneListActivity extends TextTerminalActivity {
             //TODO fade out
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        inflater.inflate(R.menu.action_bar_menu, menu);
+        menu.findItem(R.id.action_bar_settings).setVisible(false);
+        return true;
+    }
+
 }

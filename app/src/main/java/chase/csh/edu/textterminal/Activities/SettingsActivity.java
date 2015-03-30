@@ -1,5 +1,6 @@
 package chase.csh.edu.textterminal.Activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -36,10 +37,22 @@ public class SettingsActivity extends PreferenceActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting_activity_layout);
+
+
+        final Bundle animStart = ActivityOptions.makeCustomAnimation(SettingsActivity.this,
+                R.anim.fade_in, R.anim.fade_out).toBundle();
 
         Preference pinPref = findPreference("preference_pin");
         if (pinPref != null) {

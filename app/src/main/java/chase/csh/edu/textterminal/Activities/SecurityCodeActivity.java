@@ -2,6 +2,8 @@ package chase.csh.edu.textterminal.Activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -46,5 +48,14 @@ public class SecurityCodeActivity extends TextTerminalActivity {
     public void clearSecurityCode(View view) {
         SharedPrefManager.saveString(Command.SECURITY_CODE_KEY, "");
         Functions.createToastMessage("Code Removed", this, false).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        inflater.inflate(R.menu.action_bar_menu, menu);
+        menu.findItem(R.id.action_bar_settings).setVisible(false);
+        return true;
     }
 }

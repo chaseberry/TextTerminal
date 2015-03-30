@@ -35,4 +35,11 @@ public class TextTerminalActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
 }
