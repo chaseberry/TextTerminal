@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,14 +33,15 @@ public class Lookup extends Command {
     protected boolean executeCommand() {
         String lookup = getLookup();
         if (lookup == null) {
-            sendMessage(fromNumber, "Must provide something to lookup with.");
+            sendMessage("Must provide something to lookup with.", fromNumber);
             return true;
         }
         ArrayList<String> vCards = lookup(lookup);
         if (vCards == null || vCards.size() == 0) {
-            sendMessage(fromNumber, "No results found for " + lookup);
+            sendMessage("No results found for " + lookup, fromNumber);
             return true;
         }
+
         if (canUseFlag(ALL_FLAG)) {
             String message = "";
             for (String vCard : vCards) {
@@ -47,27 +49,26 @@ public class Lookup extends Command {
             }
             sendMessage(message, fromNumber);//TODO Format output differently?
         } else {
-            System.out.println(fromNumber);
             sendMessage(parseVCard(vCards.get(0)).toString(), fromNumber);//Format
         }
         return true;
     }
 
     private String getLookup() {
-        StringBuilder builder = new StringBuilder(params.size() * 5);
+        StringBuilder builder = new StringBuilder(params.size() * 15);
         if (params.size() == 0) {
             return null;
         }
         builder.append(params.get(0));
         for (int z = 1; z < params.size(); z++) {
-            builder.append(params.get(z) + " ");
+            builder.append(" " + params.get(z));
         }
         return builder.toString();
     }
 
     @Override
     public String getHelpMessage() {
-        return "Looks up a number or a name depending on what was provided.";
+        return "Looks up a number or name.";
     }
 
     @Override
@@ -87,7 +88,6 @@ public class Lookup extends Command {
     }
 
     private ArrayList<String> lookup(String num) {
-
         Uri uri;
         if (isNumber(num)) {
             uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(num));//Given a phone number

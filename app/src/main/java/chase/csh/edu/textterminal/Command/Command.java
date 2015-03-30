@@ -50,7 +50,7 @@ public abstract class Command implements JSONable {
             for (String string : values) {
                 if (string.charAt(0) == '-') {
                     flags.add(string.toLowerCase());
-                } else if (!string.equals(name)) {
+                } else {
                     params.add(string);
                 }
             }

@@ -30,7 +30,7 @@ public class Lock extends Command {
 
     @Override
     public String getHelpMessage() {
-        return "This will lock this phone if unlocked.";
+        return "Locks this device.";
     }
 
 }

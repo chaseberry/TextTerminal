@@ -76,7 +76,7 @@ public class Alert extends Command {
 
     @Override
     public String getHelpMessage() {
-        return "Causes the phone to emit an alert sound.";
+        return "Causes this device to emit an alert sound.";
     }
 
     @Override

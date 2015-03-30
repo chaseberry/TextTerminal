@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 
 import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
 import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Functions;
@@ -70,7 +71,8 @@ public class SmsReceiver extends BroadcastReceiver {
                         comm = Character.toUpperCase(comm.charAt(0)) + comm.substring(1);
                         String className = "chase.csh.edu.textterminal.Commands." + comm;
                         System.out.println(className);
-                        Command command = Functions.loadCommand(className, context, bodyParts, phoneNumber);
+                        Command command = Functions.loadCommand(className, context,
+                                Arrays.copyOfRange(bodyParts, 1, bodyParts.length), phoneNumber);
                         if (command != null) {
                             command.execute();//TODO -- log the value of this -- fromNum
                         }

@@ -39,7 +39,7 @@ public class Help extends Command {
 
     @Override
     public String getHelpMessage() {
-        return "Displays the help message";
+        return "Displays the help message.";
     }
 
 }
