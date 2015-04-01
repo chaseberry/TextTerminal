@@ -156,6 +156,12 @@ public class PhoneListActivity extends TextTerminalActivity {
     }
 
     @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(0, R.anim.slide_out_right);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         getActionBar().setDisplayHomeAsUpEnabled(true);

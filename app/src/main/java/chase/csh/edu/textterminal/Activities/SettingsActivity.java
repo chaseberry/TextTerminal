@@ -37,11 +37,10 @@ public class SettingsActivity extends PreferenceActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public void startActivity(Intent intent) {
         super.startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out);
     }
 
 
@@ -49,10 +48,6 @@ public class SettingsActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting_activity_layout);
-
-
-        final Bundle animStart = ActivityOptions.makeCustomAnimation(SettingsActivity.this,
-                R.anim.fade_in, R.anim.fade_out).toBundle();
 
         Preference pinPref = findPreference("preference_pin");
         if (pinPref != null) {

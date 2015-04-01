@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import chase.csh.edu.textterminal.Activities.SettingsActivity;
 import chase.csh.edu.textterminal.R;
 
 /**
@@ -35,11 +34,4 @@ public class TextTerminalActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         return true;
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
-
 }

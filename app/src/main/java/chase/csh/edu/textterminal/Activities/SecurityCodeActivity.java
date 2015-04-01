@@ -1,6 +1,7 @@
 package chase.csh.edu.textterminal.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +23,11 @@ public class SecurityCodeActivity extends TextTerminalActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.security_code_activity_layout);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     public void saveSecurityCode(View view) {
@@ -48,6 +54,12 @@ public class SecurityCodeActivity extends TextTerminalActivity {
     public void clearSecurityCode(View view) {
         SharedPrefManager.saveString(Command.SECURITY_CODE_KEY, "");
         Functions.createToastMessage("Code Removed", this, false).show();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(0, R.anim.slide_out_right);
     }
 
     @Override
