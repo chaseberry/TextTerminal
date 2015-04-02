@@ -87,47 +87,38 @@ public class MainActivityListLoader extends BaseAdapter {
                 c.save();
             }
         });
-        /*
+        if (holder.commandChildLayout.getVisibility() == View.VISIBLE) {
 
-        String[] params = command.getParams();
-        holder.parameters.removeAllViews();
-        if (params != null && params.length > 0) {
-            CommandParameterAdapter parameterLoader = new CommandParameterAdapter(params, parent);
-            for (int z = 0; z < parameterLoader.getCount(); z++) {
-                View v = parameterLoader.getView(z, null, null);
-                if (v != null) {
-                    holder.parameters.addView(v);
+            String[] params = command.getParams();
+            if (params != null && params.length > 0) {
+                holder.parameters.removeAllViews();
+                holder.parameters.setVisibility(View.VISIBLE);
+                CommandParameterAdapter parameterLoader = new CommandParameterAdapter(params, parent);
+                for (int z = 0; z < parameterLoader.getCount(); z++) {
+                    View v = parameterLoader.getView(z, null, null);
+                    if (v != null) {
+                        holder.parameters.addView(v);
+                    }
                 }
+            } else {
+                holder.parameters.setVisibility(View.GONE);
             }
-        } else {
-            TextView emptyView = (TextView) inflater.inflate(R.layout.empty_listview_view, null);
-            emptyView.setText("No Parameters");
-            holder.parameters.addView(emptyView);
-        }
 
-        holder.flags.removeAllViews();
-        if (command.getCommandFlags() != null && command.getCommandFlags().size() > 0) {
-            CommandFlagAdapter flagLoader = new CommandFlagAdapter(command, parent);
-            for (int z = 0; z < flagLoader.getCount(); z++) {
-                View v = flagLoader.getView(z, null, null);
-                if (v != null) {
-                    holder.parameters.addView(v);
+            if (command.getCommandFlags() != null && command.getCommandFlags().size() > 0) {
+                holder.flags.removeAllViews();
+                holder.flags.setVisibility(View.VISIBLE);
+                CommandFlagAdapter flagLoader = new CommandFlagAdapter(command, parent);
+                for (int z = 0; z < flagLoader.getCount(); z++) {
+                    View v = flagLoader.getView(z, null, null);
+                    if (v != null) {
+                        holder.flags.addView(v);
+                    }
                 }
+            } else {
+                holder.flags.setVisibility(View.GONE);
             }
-        } else {
-            TextView emptyView = (TextView) inflater.inflate(R.layout.empty_listview_view, null);
-            emptyView.setText("No flags");
-            holder.flags.addView(emptyView);
+
         }
-
-        holder.commandLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.commandChildLayout.setVisibility(holder.commandChildLayout.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
-            }
-        });
-
-        */
         return view;
     }
 

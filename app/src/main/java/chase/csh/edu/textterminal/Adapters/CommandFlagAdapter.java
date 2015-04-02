@@ -56,7 +56,6 @@ public class CommandFlagAdapter extends BaseAdapter {
             holder = new Holder();
             view = inflater.inflate(R.layout.command_flag_layout, null);
             holder.name = (TextView) view.findViewById(R.id.command_flag_name);
-            holder.enabled = (Switch) view.findViewById(R.id.command_flag_enabled);
             holder.description = (TextView) view.findViewById(R.id.command_flag_descriptions);
             holder.icon = (TextView) view.findViewById(R.id.command_flag_image);
             view.setTag(holder);
@@ -64,25 +63,15 @@ public class CommandFlagAdapter extends BaseAdapter {
             holder = (Holder) view.getTag();
         }
 
-        holder.enabled.setOnCheckedChangeListener(null);
         holder.name.setText(flag.getFlagName());
         holder.description.setText(flag.getFlagDescription());
-        holder.enabled.setChecked(flag.isFlagEnabled());
         holder.icon.setText(flag.getFlag());
-        holder.enabled.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                flag.setFlagEnabled(b);
-                command.save();
-            }
-        });
         return view;
     }
 
 
     static class Holder {
         TextView name;
-        Switch enabled;
         TextView description;
         TextView icon;
     }

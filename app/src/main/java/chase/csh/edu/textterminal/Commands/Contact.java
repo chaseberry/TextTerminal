@@ -79,7 +79,7 @@ public class Contact extends Command {
 
     @Override
     public String[] getParams() {
-        return new String[]{"The first name.", "The last name"};
+        return new String[]{"firstName lastName"};
     }
 
     @Override
@@ -94,7 +94,7 @@ public class Contact extends Command {
             flags.add(commandFlags.get(CUSTOM_FLAG));//Flag exists and was loaded in from memory
         } else {
             //Flag was not loaded in from memory (IE first run, so it must be created)
-            flags.add(new CommandFlag(CUSTOM_FLAG, "Custom Number", "This will use the third parameter as a contact."));
+            flags.add(new CommandFlag(CUSTOM_FLAG, "Custom Number", "This will use the third parameter as a contact number."));
         }
         return flags;
     }
