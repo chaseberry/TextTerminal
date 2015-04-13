@@ -13,3 +13,4 @@ settings.gradle
 gradle/
 gradlew
 RestfulAPIConnector/build
+app/src/productionVersion/*
