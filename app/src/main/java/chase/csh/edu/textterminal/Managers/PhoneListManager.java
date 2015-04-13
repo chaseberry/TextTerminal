@@ -9,9 +9,6 @@ import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.Models.PhoneNumber;
 import edu.csh.chase.RestfulAPIConnector.JSONWrapper.JSONWrapper;
 
-/**
- * Created by chase on 12/22/14.
- */
 public abstract class PhoneListManager {
 
     public enum ListType {

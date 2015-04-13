@@ -7,5 +7,15 @@
     <string name="phone_list_type">PHONE_LIST_TYPE</string>
     <string name="blacklist_string">Blacklist</string>
     <string name="whitelist_string">Whitelist</string>
+    <string name="supply_tag_help_text">You must supply a tag for this number</string>
+    <string name="number_already_present_help_text">"Number already in "</string>
+    <string name="a_number">" a number"</string>
+    <string name="add_text">Add</string>
+    <string name="invalid_phone_number_help_text">Invalid phone number</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="fill_all_fields_help_text">Please fill all out fields</string>
+    <string name="code_match_fail_help_text">Codes do not match</string>
+    <string name="code_set_help_text">Code set</string>
+    <string name="code_removed_help_text">Code Removed</string>
 
 </resources>

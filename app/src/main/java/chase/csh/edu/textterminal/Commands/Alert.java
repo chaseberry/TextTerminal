@@ -12,15 +12,12 @@ import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Command.CommandFlag;
 import chase.csh.edu.textterminal.R;
 
-/**
- * Created by chase on 12/4/14.
- */
 public class Alert extends Command {
 
-    private final String FORCE_FLAG = "-f";
+    private final String FORCE_FLAG = parent.getString(R.string.command_alert_flag_force);
 
     public Alert(Context c, String[] values, String num) {
-        super(c, "Alert", R.drawable.ic_volume_up_white_48dp, values, num);
+        super(c, c.getString(R.string.command_alert_title), R.drawable.ic_volume_up_white_48dp, values, num);
     }
 
     @Override
@@ -52,7 +49,7 @@ public class Alert extends Command {
             public void onCompletion(MediaPlayer mediaPlayer) {
                 mediaPlayer.release();
                 audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, firstVol, 0);
-                sendMessage("Device alerted", fromNumber);
+                sendMessage(parent.getString(R.string.command_alert_device_alerted), fromNumber);
             }
         });
         try {
@@ -76,7 +73,7 @@ public class Alert extends Command {
 
     @Override
     public String getHelpMessage() {
-        return "Causes this device to emit an alert sound.";
+        return parent.getString(R.string.command_alert_help_message);
     }
 
     @Override
@@ -85,7 +82,7 @@ public class Alert extends Command {
         if (commandFlags.get(FORCE_FLAG) != null) {
             flags.add(commandFlags.get(FORCE_FLAG));//Was this flag loaded before?
         } else {
-            flags.add(new CommandFlag(FORCE_FLAG, "Force", "Forces the alert to override volume settings"));
+            flags.add(new CommandFlag(FORCE_FLAG, parent.getString(R.string.command_alert_flag_force_name), parent.getString(R.string.command_alert_flag_force_description)));
         }
         return flags;
     }

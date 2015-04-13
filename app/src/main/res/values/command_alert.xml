@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_alert_help_message">Causes this device to emit an alert sound.</string>
+    <string name="command_alert_device_alerted">Device alerted.</string>
+    <string name="command_alert_title">Alert</string>
+    <string name="command_alert_flag_force_description">Forces the alert to override volume settings.</string>
+    <string name="command_alert_flag_force_name">Force</string>
+    <string name="command_alert_flag_force">-f</string>
+</resources>

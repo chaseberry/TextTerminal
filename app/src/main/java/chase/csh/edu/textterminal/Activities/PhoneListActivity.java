@@ -90,7 +90,7 @@ public class PhoneListActivity extends TextTerminalActivity {
         listView.addItemDecoration(new DividerItemDecoration(PhoneListActivity.this, DividerItemDecoration.VERTICAL_LIST));
 
         emptyView = (TextView) findViewById(R.id.phone_list_activity_empty_view);
-        emptyView.setText(listType.toString() + " a number");
+        emptyView.setText(listType.toString() + getString(R.string.a_number));
         if (PhoneListManager.getNumberManager(listType).size() != 0) {
             emptyView.setVisibility(View.GONE);
         }
@@ -106,9 +106,9 @@ public class PhoneListActivity extends TextTerminalActivity {
 
     public void addNumber(View view) {
         addNumberDialog = new AlertDialog.Builder(this)
-                .setTitle(listType.toString() + " a number")
+                .setTitle(listType.toString() + getString(R.string.a_number))
                 .setView(R.layout.add_number_dialog_layout)
-                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.add_text), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String number = ((EditText) addNumberDialog.findViewById(R.id.add_number_edit_text)).getText().toString();
@@ -122,17 +122,17 @@ public class PhoneListActivity extends TextTerminalActivity {
                                 public void run() {
                                     switch (result) {
                                         case alreadyExists:
-                                            Functions.createToastMessage("Number already in " + listType.toString(),
+                                            Functions.createToastMessage(getString(R.string.number_already_present_help_text) + listType.toString(),
                                                     PhoneListActivity.this, false).show();
                                             break;
 
                                         case noTag:
-                                            Functions.createToastMessage("You must supply a tag for this number",
+                                            Functions.createToastMessage(getString(R.string.supply_tag_help_text),
                                                     PhoneListActivity.this, false).show();
                                             break;
 
                                         case invalidFormat:
-                                            Functions.createToastMessage("Invalid phone number",
+                                            Functions.createToastMessage(getString(R.string.invalid_phone_number_help_text),
                                                     PhoneListActivity.this, false).show();
                                             break;
                                     }
@@ -142,7 +142,7 @@ public class PhoneListActivity extends TextTerminalActivity {
                         }
                     }
                 })
-                .setNegativeButton("Cancel", null).create();
+                .setNegativeButton(getString(R.string.cancel_text), null).create();
         addNumberDialog.show();
     }
 

@@ -34,11 +34,11 @@ public class SecurityCodeActivity extends TextTerminalActivity {
         String newPass = ((EditText) findViewById(R.id.security_code_activity_code_new)).getText().toString();
         String confirmPass = ((EditText) findViewById(R.id.security_code_activity_code_confirm)).getText().toString();
         if (null == newPass || null == confirmPass || "".equals(newPass) || "".equals(confirmPass)) {
-            Functions.createMessageWithButton("Please fill all out fields", this).show();
+            Functions.createMessageWithButton(getString(R.string.fill_all_fields_help_text), this).show();
             return;
         }
         if (!newPass.equals(confirmPass)) {
-            Functions.createMessageWithButton("Codes don't match!", this).show();
+            Functions.createMessageWithButton(getString(R.string.code_match_fail_help_text), this).show();
             return;
         }
 
@@ -48,12 +48,12 @@ public class SecurityCodeActivity extends TextTerminalActivity {
             imm.hideSoftInputFromWindow(findViewById(R.id.security_code_activity_code_confirm).getWindowToken(), 0);
             imm.hideSoftInputFromWindow(findViewById(R.id.security_code_activity_code_new).getWindowToken(), 0);
         }
-        Functions.createToastMessage("Code set", this, false).show();
+        Functions.createToastMessage(getString(R.string.code_set_help_text), this, false).show();
     }
 
     public void clearSecurityCode(View view) {
         SharedPrefManager.saveString(Command.SECURITY_CODE_KEY, "");
-        Functions.createToastMessage("Code Removed", this, false).show();
+        Functions.createToastMessage(getString(R.string.code_removed_help_text), this, false).show();
     }
 
     @Override
