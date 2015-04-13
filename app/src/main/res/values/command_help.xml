@@ -3,5 +3,7 @@
     <string name="command_help_title">Help</string>
     <string name="command_help_help">Displays the help message.</string>
     <string name="command_help_response_1">"Send a command to this phone and see what happens. "</string>
-    <string name="command_help_response_2">You can append -h in each specific command for help</string>
+    <string name="command_help_response_3">You can append -h in each specific command for help.</string>
+    <string name="command_help_response_2">"Valid commands are "</string>
+
 </resources>

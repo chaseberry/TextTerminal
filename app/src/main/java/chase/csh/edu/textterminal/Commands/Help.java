@@ -33,7 +33,7 @@ public class Help extends Command {
     protected boolean executeCommand() {
         sendMessage(parent.getString(R.string.command_help_response_1) +
                 parent.getString(R.string.command_help_response_2) + getCommands() + ". " +
-                parent.getString(R.string.command_help_response_2), fromNumber);
+                parent.getString(R.string.command_help_response_3), fromNumber);
         return true;
     }
 

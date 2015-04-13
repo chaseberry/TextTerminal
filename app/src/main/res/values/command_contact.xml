@@ -10,6 +10,5 @@
     <string name="command_contact_flag_title">Custom Number</string>
     <string name="command_contact_flag_description">This will use the third parameter as a contact number.</string>
     <string name="command_contact_parameter_1">first name last name</string>
-    <string name="command_help_response_2">"Valid commands are "</string>
 
 </resources>
