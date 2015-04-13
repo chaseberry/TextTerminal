@@ -16,7 +16,7 @@ import chase.csh.edu.textterminal.R;
 public class Location extends Command {
 
     GoogleApiClient locationClient;
-    private final String ACCURACY_FLAG = "-a";
+    private final String ACCURACY_FLAG = parent.getString(R.string.command_location_flag_accuracy);
 
 
     GoogleApiClient.ConnectionCallbacks connectionListener = new GoogleApiClient.ConnectionCallbacks() {
@@ -27,9 +27,9 @@ public class Location extends Command {
             if (l != null) {
                 String location = "(" + l.getLatitude() + ", " + l.getLongitude() + ")";
                 if (canUseFlag(ACCURACY_FLAG)) {
-                    location += " within " + l.getAccuracy() + "m";
+                    location += parent.getString(R.string.command_location_accuracy_addition) + l.getAccuracy() + "m";
                 }
-                sendMessage("This device is located at " + location, fromNumber);
+                sendMessage(parent.getString(R.string.command_location_device_located) + location, fromNumber);
                 locationClient.disconnect();
                 locationClient = null;
             }
@@ -59,7 +59,7 @@ public class Location extends Command {
     };
 
     public Location(Context c, String[] values, String phone) {
-        super(c, "Location", R.drawable.ic_my_location_white_48dp, values, phone);
+        super(c, c.getString(R.string.command_location_title), R.drawable.ic_my_location_white_48dp, values, phone);
     }
 
     @Override

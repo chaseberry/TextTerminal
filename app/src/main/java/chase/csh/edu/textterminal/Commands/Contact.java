@@ -13,33 +13,30 @@ import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Command.CommandFlag;
 import chase.csh.edu.textterminal.R;
 
-/**
- * Created by chase on 3/30/15.
- */
 public class Contact extends Command {
 
-    public static final String CUSTOM_FLAG = "-c";
+    public final String CUSTOM_FLAG = parent.getString(R.string.command_contact_flag_custom);
 
     public Contact(Context context, String[] values, String phone) {
-        super(context, "Contact", R.drawable.ic_person_add_white_48dp, values, phone);
+        super(context, context.getString(R.string.command_contact_title), R.drawable.ic_person_add_white_48dp, values, phone);
     }
 
     @Override
     protected boolean executeCommand() {
         boolean usingCustom = canUseFlag(CUSTOM_FLAG);
         if (params.size() < 2) {
-            sendMessage("Please provide both a first name and a last name.", fromNumber);
+            sendMessage(parent.getString(R.string.command_contact_response_invalid_parameters), fromNumber);
             return false;
         }
         if (usingCustom && params.size() < 3) {
-            sendMessage("Please add a number for a custom contact.", fromNumber);
+            sendMessage(parent.getString(R.string.command_contact_response_invalid_custom_parameters), fromNumber);
         }
         String firstName = params.get(0), lastName = params.get(1);
         if (addContact(firstName, lastName, usingCustom ? params.get(2) : fromNumber)) {
-            sendMessage("New contact added", fromNumber);
+            sendMessage(parent.getString(R.string.command_contact_response_success), fromNumber);
             return true;
         } else {
-            sendMessage("The contact failed to add", fromNumber);
+            sendMessage(parent.getString(R.string.command_contact_response_failure), fromNumber);
         }
         return false;
     }
@@ -79,12 +76,12 @@ public class Contact extends Command {
 
     @Override
     public String[] getParams() {
-        return new String[]{"firstName lastName"};
+        return new String[]{"first name last name"};
     }
 
     @Override
     public String getHelpMessage() {
-        return "Adds this number as a contact";
+        return parent.getString(R.string.command_contact_help);
     }
 
     @Override
@@ -94,7 +91,8 @@ public class Contact extends Command {
             flags.add(commandFlags.get(CUSTOM_FLAG));//Flag exists and was loaded in from memory
         } else {
             //Flag was not loaded in from memory (IE first run, so it must be created)
-            flags.add(new CommandFlag(CUSTOM_FLAG, "Custom Number", "This will use the third parameter as a contact number."));
+            flags.add(new CommandFlag(CUSTOM_FLAG, parent.getString(R.string.command_contact_flag_title),
+                    parent.getString(R.string.command_contact_flag_description)));
         }
         return flags;
     }

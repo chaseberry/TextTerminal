@@ -18,9 +18,6 @@ import chase.csh.edu.textterminal.Command.Command;
 import chase.csh.edu.textterminal.Command.CommandFlag;
 import chase.csh.edu.textterminal.R;
 
-/**
- * Created by chase on 12/17/14.
- */
 public class Lookup extends Command {
 
     private final String ALL_FLAG = "-a";

@@ -3,4 +3,9 @@
     <string name="command_location_help">Gets the location of this device.</string>
     <string name="command_location_flag_accuracy_name">Accuracy</string>
     <string name="command_location_flag_accuracy_description">This will return the accuracy with the location</string>
+    <string name="command_location_title">Location</string>
+    <string name="command_location_device_located">"This device is located at "</string>
+    <string name="command_location_flag_accuracy">-a</string>
+    <string name="command_location_accuracy_addition">" within "</string>
+
 </resources>

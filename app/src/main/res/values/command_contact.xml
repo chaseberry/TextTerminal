@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_contact_flag_custom">-c</string>
+    <string name="command_contact_title">Contact</string>
+    <string name="command_contact_response_invalid_custom_parameters">Please add a number for a custom contact.</string>
+    <string name="command_contact_response_invalid_parameters">Please provide both a first name and a last name.</string>
+    <string name="command_contact_response_success">New contact added</string>
+    <string name="command_contact_response_failure">The contact failed to add</string>
+    <string name="command_contact_help">Adds this number as a contact</string>
+    <string name="command_contact_flag_title">Custom Number</string>
+    <string name="command_contact_flag_description">This will use the third parameter as a contact number.</string>
+
+</resources>
