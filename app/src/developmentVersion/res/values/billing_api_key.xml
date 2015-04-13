@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="billing_api_key">Shh it's a secret to everyone</string>
+    <string name="billing_api_key">Shh it\'s a secret to everyone</string>
 </resources>
