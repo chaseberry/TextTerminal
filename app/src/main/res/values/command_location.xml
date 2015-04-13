@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_location_help">Gets the location of this device.</string>
+    <string name="command_location_flag_accuracy_name">Accuracy</string>
+    <string name="command_location_flag_accuracy_description">This will return the accuracy with the location</string>
+</resources>

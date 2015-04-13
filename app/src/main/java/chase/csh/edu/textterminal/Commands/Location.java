@@ -71,7 +71,7 @@ public class Location extends Command {
 
     @Override
     public String getHelpMessage() {
-        return "Gets the location of this device.";
+        return parent.getString(R.string.command_location_help);
     }
 
     @Override
@@ -81,7 +81,8 @@ public class Location extends Command {
             flags.add(commandFlags.get(ACCURACY_FLAG));//Flag exists and was loaded in from memory
         } else {
             //Flag was not loaded in from memory (IE first run, so it must be created)
-            flags.add(new CommandFlag(ACCURACY_FLAG, "Accuracy", "This will return the accuracy with the location"));
+            flags.add(new CommandFlag(ACCURACY_FLAG, parent.getString(R.string.command_location_flag_accuracy_name),
+                    parent.getString(R.string.command_location_flag_accuracy_description)));
         }
         return flags;
     }

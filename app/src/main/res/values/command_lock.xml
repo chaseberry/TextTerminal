@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_lock_title">Lock</string>
+    <string name="command_lock_success">Device locked.</string>
+    <string name="command_lock_help">Locks this device.</string>
+</resources>

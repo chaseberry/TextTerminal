@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_help_title">Help</string>
+    <string name="command_help_help">Displays the help message.</string>
+</resources>

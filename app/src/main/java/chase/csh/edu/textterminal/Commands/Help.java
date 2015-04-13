@@ -14,7 +14,7 @@ import chase.csh.edu.textterminal.R;
 public class Help extends Command {
 
     public Help(Context c, String[] values, String phone) {
-        super(c, "Help", R.drawable.ic_help_white_48dp, values, phone);
+        super(c, c.getString(R.string.command_help_title), R.drawable.ic_help_white_48dp, values, phone);
     }
 
     public String getCommands() {
@@ -39,7 +39,7 @@ public class Help extends Command {
 
     @Override
     public String getHelpMessage() {
-        return "Displays the help message.";
+        return parent.getString(R.string.command_help_help);
     }
 
 }
