@@ -20,22 +20,22 @@ import chase.csh.edu.textterminal.R;
 
 public class Lookup extends Command {
 
-    private final String ALL_FLAG = "-a";
+    private final String ALL_FLAG = parent.getString(R.string.command_lookup_flag_accuracy);
 
     public Lookup(Context c, String[] parts, String phone) {
-        super(c, "Lookup", R.drawable.ic_contacts_white_48dp, parts, phone);
+        super(c, c.getString(R.string.command_lookup_title), R.drawable.ic_contacts_white_48dp, parts, phone);
     }
 
     @Override
     protected boolean executeCommand() {
         String lookup = getLookup();
         if (lookup == null) {
-            sendMessage("Must provide something to lookup with.", fromNumber);
+            sendMessage(parent.getString(R.string.command_lookup_response_no_parameters), fromNumber);
             return true;
         }
         ArrayList<String> vCards = lookup(lookup);
         if (vCards == null || vCards.size() == 0) {
-            sendMessage("No results found for " + lookup, fromNumber);
+            sendMessage(parent.getString(R.string.command_lookup_response_no_results) + lookup, fromNumber);
             return true;
         }
 
@@ -65,12 +65,12 @@ public class Lookup extends Command {
 
     @Override
     public String getHelpMessage() {
-        return "Looks up a number or name.";
+        return parent.getString(R.string.command_lookup_help);
     }
 
     @Override
     public String[] getParams() {
-        return new String[]{"The name or number to lookup"};
+        return new String[]{parent.getString(R.string.command_lookup_parameter_1)};
     }
 
     @Override
@@ -79,7 +79,8 @@ public class Lookup extends Command {
         if (commandFlags.get(ALL_FLAG) != null) {
             flags.add(commandFlags.get(ALL_FLAG));
         } else {
-            flags.add(new CommandFlag(ALL_FLAG, "All", "Sends all values found instead of just the first"));
+            flags.add(new CommandFlag(ALL_FLAG, parent.getString(R.string.command_lookup_flag_all_title),
+                    parent.getString(R.string.command_lookup_flag_all_description)));
         }
         return flags;
     }

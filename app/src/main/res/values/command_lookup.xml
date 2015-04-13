@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_lookup_flag_accuracy">-a</string>
+    <string name="command_lookup_title">Lookup</string>
+    <string name="command_lookup_response_no_parameters">Must provide something to lookup with.</string>
+    <string name="command_lookup_response_no_results">"No results found for "</string>
+    <string name="command_lookup_help">Looks up a number or name.</string>
+    <string name="command_lookup_parameter_1">The name or number to lookup</string>
+    <string name="command_lookup_flag_all_title">All</string>
+    <string name="command_lookup_flag_all_description">Sends all values found instead of just the first</string>
+</resources>

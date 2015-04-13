@@ -31,9 +31,9 @@ public class Help extends Command {
 
     @Override
     protected boolean executeCommand() {
-        sendMessage("Send a command to this phone and see what happens. " +
-                "Valid commands are " + getCommands() + ". " +
-                "You can append -h in each specific command for help", fromNumber);
+        sendMessage(parent.getString(R.string.command_help_response_1) +
+                parent.getString(R.string.command_help_response_2) + getCommands() + ". " +
+                parent.getString(R.string.command_help_response_2), fromNumber);
         return true;
     }
 

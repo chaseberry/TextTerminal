@@ -76,7 +76,7 @@ public class Contact extends Command {
 
     @Override
     public String[] getParams() {
-        return new String[]{"first name last name"};
+        return new String[]{parent.getString(R.string.command_contact_parameter_1)};
     }
 
     @Override
