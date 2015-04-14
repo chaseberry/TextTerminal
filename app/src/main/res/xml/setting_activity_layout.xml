@@ -29,6 +29,14 @@
                 android:value="Blacklist" />
         </intent>
     </Preference>
+
+    <Preference android:title="Donate">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="chase.csh.edu.textterminal.Activities.DonateActivity"
+            android:targetPackage="chase.csh.edu.textterminal" />
+    </Preference>
+
     <Preference
         android:title="Enable Device Administrative Features"
         android:key="preference_admin_features" />

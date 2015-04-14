@@ -25,11 +25,6 @@ public class SecurityCodeActivity extends TextTerminalActivity {
         setContentView(R.layout.security_code_activity_layout);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     public void saveSecurityCode(View view) {
         String newPass = ((EditText) findViewById(R.id.security_code_activity_code_new)).getText().toString();
         String confirmPass = ((EditText) findViewById(R.id.security_code_activity_code_confirm)).getText().toString();
