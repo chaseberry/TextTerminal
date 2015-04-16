@@ -65,7 +65,7 @@
 
         <activity
             android:name=".Activities.DonateActivity"
-            android:label="Donate"
+            android:label="@string/activity_donate_title"
             android:parentActivityName=".Activities.SettingsActivity" />
 
         <receiver android:name=".Receivers.SmsReceiver">

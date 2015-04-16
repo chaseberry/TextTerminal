@@ -55,7 +55,40 @@ public class SettingsActivity extends PreferenceActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     startActivity(new Intent(getApplicationContext(), SecurityCodeActivity.class));
-                    return false;
+                    return true;
+                }
+            });
+        }
+
+        Preference whiteListPref = findPreference("Whitelist");
+        if (whiteListPref != null) {
+            whiteListPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    startPhoneListActivity("Whitelist");
+                    return true;
+                }
+            });
+        }
+
+        Preference blackListPref = findPreference("Blacklist");
+        if (blackListPref != null) {
+            blackListPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    startPhoneListActivity("Blacklist");
+                    return true;
+                }
+            });
+        }
+
+        Preference donatePref = findPreference("donate");
+        if (donatePref != null) {
+            donatePref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    startDonateActivity();
+                    return true;
                 }
             });
         }
@@ -102,4 +135,15 @@ public class SettingsActivity extends PreferenceActivity {
             }
         }
     }
+
+    private void startDonateActivity() {
+        startActivity(new Intent(SettingsActivity.this, DonateActivity.class));
+    }
+
+    private void startPhoneListActivity(String list) {
+        Intent i = new Intent(SettingsActivity.this, PhoneListActivity.class);
+        i.putExtra("PHONE_LIST_TYPE", list);
+        startActivity(i);
+    }
+
 }

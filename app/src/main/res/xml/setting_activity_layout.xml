@@ -5,37 +5,17 @@
     <Preference
         android:title="Security Code"
         android:key="preference_pin" />
+
     <Preference
         android:title="@string/whitelist_string"
-        android:key="Whitelist">
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:targetClass="chase.csh.edu.textterminal.Activities.PhoneListActivity"
-            android:targetPackage="chase.csh.edu.textterminal">
-            <extra
-                android:name="PHONE_LIST_TYPE"
-                android:value="Whitelist" />
-        </intent>
-    </Preference>
+        android:key="Whitelist" />
     <Preference
         android:title="@string/blacklist_string"
-        android:key="Blacklist">
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:targetClass="chase.csh.edu.textterminal.Activities.PhoneListActivity"
-            android:targetPackage="chase.csh.edu.textterminal">
-            <extra
-                android:name="PHONE_LIST_TYPE"
-                android:value="Blacklist" />
-        </intent>
-    </Preference>
+        android:key="Blacklist" />
 
-    <Preference android:title="Donate">
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:targetClass="chase.csh.edu.textterminal.Activities.DonateActivity"
-            android:targetPackage="chase.csh.edu.textterminal" />
-    </Preference>
+    <Preference
+        android:title="Donate"
+        android:key="donate" />
 
     <Preference
         android:title="Enable Device Administrative Features"

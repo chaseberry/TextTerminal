@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -19,17 +20,20 @@ android {
     }
 
     productFlavors {
-
         developmentVersion {
             applicationId "chase.csh.edu.textterminal.dev"
             versionName "dev-1.0"
+            minSdkVersion 21
+            targetSdkVersion 21
+            versionCode 1
         }
-
         productionVersion {
             applicationId "chase.csh.edu.textterminal"
             versionName "1.0"
+            minSdkVersion 21
+            targetSdkVersion 21
+            versionCode 1
         }
-
     }
 
 }
