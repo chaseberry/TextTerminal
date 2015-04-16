@@ -14,7 +14,7 @@
         android:key="Blacklist" />
 
     <Preference
-        android:title="Donate"
+        android:title="@string/activity_donate_title"
         android:key="donate" />
 
     <Preference
