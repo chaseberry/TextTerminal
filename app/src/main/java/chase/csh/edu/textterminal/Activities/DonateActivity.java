@@ -13,6 +13,7 @@ import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.TransactionDetails;
 
 import chase.csh.edu.textterminal.Adapters.DonateActivityGridAdapter;
+import chase.csh.edu.textterminal.Functions;
 import chase.csh.edu.textterminal.R;
 
 public class DonateActivity extends TextTerminalActivity {
@@ -22,7 +23,8 @@ public class DonateActivity extends TextTerminalActivity {
     BillingProcessor.IBillingHandler billingHandler = new BillingProcessor.IBillingHandler() {
         @Override
         public void onProductPurchased(String s, TransactionDetails transactionDetails) {
-
+            Functions.createToastMessage("Thanks for the support!", DonateActivity.this, false).show();
+            billingProcessor.consumePurchase(transactionDetails.productId);//It's just a donation, no need to hold onto it
         }
 
         @Override
@@ -32,7 +34,7 @@ public class DonateActivity extends TextTerminalActivity {
 
         @Override
         public void onBillingError(int i, Throwable throwable) {
-
+            Functions.createToastMessage("An error occured.", DonateActivity.this, false).show();
         }
 
         @Override
@@ -62,7 +64,7 @@ public class DonateActivity extends TextTerminalActivity {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println(elements[position].id);
+                billingProcessor.purchase(DonateActivity.this, elements[position].id);
             }
         });
     }
