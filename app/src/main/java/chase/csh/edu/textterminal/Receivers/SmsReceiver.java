@@ -35,9 +35,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         String phoneNumber = "+1" + currentMessage.getDisplayOriginatingAddress();//TODO confirm the +1 works
 
                         String message = currentMessage.getDisplayMessageBody();
-
                         //Parse message
-
                         WhiteListManager whiteList = new WhiteListManager();//Create a reference to the whiteList
 
                         BlackListManager blackList = new BlackListManager();//create a reference to the blackList
@@ -68,7 +66,7 @@ public class SmsReceiver extends BroadcastReceiver {
                             break;
                         }
                         //Parse message
-                        comm = Character.toUpperCase(comm.charAt(0)) + comm.substring(1);
+                        comm = (Character.toUpperCase(comm.charAt(0)) + comm.substring(1)).trim();
                         String className = "chase.csh.edu.textterminal.Commands." + comm;
                         System.out.println(className);
                         Command command = Functions.loadCommand(className, context,
