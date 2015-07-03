@@ -13,9 +13,9 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
 import edu.csh.chase.textterminal.Command.CommandFlag;
+import edu.csh.chase.textterminal.R;
 
 public class Lookup extends Command {
 

@@ -19,12 +19,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Adapters.PhoneListActivityAdapter;
 import edu.csh.chase.textterminal.DividerItemDecoration;
 import edu.csh.chase.textterminal.Functions;
 import edu.csh.chase.textterminal.Managers.PhoneListManager;
 import edu.csh.chase.textterminal.Managers.SharedPrefManager;
+import edu.csh.chase.textterminal.R;
 
 /**
  * Created by chase on 12/7/14.

@@ -7,9 +7,9 @@ import android.provider.ContactsContract;
 
 import java.util.ArrayList;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
 import edu.csh.chase.textterminal.Command.CommandFlag;
+import edu.csh.chase.textterminal.R;
 
 public class Contact extends Command {
 
@@ -35,8 +35,8 @@ public class Contact extends Command {
             return true;
         } else {
             sendMessage(parent.getString(R.string.command_contact_response_failure), fromNumber);
+            return false;
         }
-        return false;
     }
 
     public boolean addContact(String firstName, String lastName, String num) {

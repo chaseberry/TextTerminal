@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import chase.csh.edu.textterminal.R;
+import edu.csh.chase.textterminal.R;
 
 public class CommandParameterAdapter extends BaseAdapter {
 

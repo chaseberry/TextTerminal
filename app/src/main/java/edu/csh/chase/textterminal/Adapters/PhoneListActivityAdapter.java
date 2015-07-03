@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Activities.PhoneListActivity;
 import edu.csh.chase.textterminal.Managers.PhoneListManager;
+import edu.csh.chase.textterminal.R;
 import edu.csh.chase.textterminal.RecyclerViewSwipeListener;
 
 public class PhoneListActivityAdapter extends RecyclerView.Adapter {

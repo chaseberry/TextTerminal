@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.regex.Pattern;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
 import edu.csh.chase.textterminal.Functions;
+import edu.csh.chase.textterminal.R;
 
 public class Help extends Command {
 

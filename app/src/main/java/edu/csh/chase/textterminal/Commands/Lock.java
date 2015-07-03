@@ -4,8 +4,8 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
+import edu.csh.chase.textterminal.R;
 import edu.csh.chase.textterminal.Receivers.DeviceAdminReceiver;
 
 public class Lock extends Command {

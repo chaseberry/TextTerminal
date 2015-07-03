@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import chase.csh.edu.textterminal.R;
+import edu.csh.chase.textterminal.R;
 
 public class TextTerminalActivity extends Activity {
 

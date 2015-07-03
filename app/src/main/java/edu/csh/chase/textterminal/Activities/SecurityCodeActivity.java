@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
 import edu.csh.chase.textterminal.Functions;
 import edu.csh.chase.textterminal.Managers.SharedPrefManager;
+import edu.csh.chase.textterminal.R;
 
 public class SecurityCodeActivity extends TextTerminalActivity {
 

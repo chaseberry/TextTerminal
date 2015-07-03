@@ -15,9 +15,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
 import edu.csh.chase.textterminal.Functions;
+import edu.csh.chase.textterminal.R;
 
 
 public class MainActivityListLoader extends BaseAdapter {

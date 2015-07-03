@@ -9,9 +9,9 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.ArrayList;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
 import edu.csh.chase.textterminal.Command.CommandFlag;
+import edu.csh.chase.textterminal.R;
 
 public class Location extends Command {
 

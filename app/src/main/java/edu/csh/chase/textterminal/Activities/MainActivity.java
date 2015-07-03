@@ -9,10 +9,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Adapters.MainActivityListLoader;
 import edu.csh.chase.textterminal.Functions;
 import edu.csh.chase.textterminal.Managers.SharedPrefManager;
+import edu.csh.chase.textterminal.R;
 
 public class MainActivity extends TextTerminalActivity {
 

@@ -9,11 +9,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
 import edu.csh.chase.textterminal.Functions;
 import edu.csh.chase.textterminal.Managers.PhoneListManager;
 import edu.csh.chase.textterminal.Managers.SharedPrefManager;
+import edu.csh.chase.textterminal.R;
 
 
 public class SettingsActivity extends PreferenceActivity {

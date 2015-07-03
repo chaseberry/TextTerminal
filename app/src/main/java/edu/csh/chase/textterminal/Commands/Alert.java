@@ -8,9 +8,9 @@ import android.media.RingtoneManager;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import chase.csh.edu.textterminal.R;
 import edu.csh.chase.textterminal.Command.Command;
 import edu.csh.chase.textterminal.Command.CommandFlag;
+import edu.csh.chase.textterminal.R;
 
 public class Alert extends Command {
 
