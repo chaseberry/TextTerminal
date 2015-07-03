@@ -14,10 +14,6 @@
         android:key="Blacklist" />
 
     <Preference
-        android:title="@string/activity_donate_title"
-        android:key="donate" />
-
-    <Preference
         android:title="Enable Device Administrative Features"
         android:key="preference_admin_features" />
 

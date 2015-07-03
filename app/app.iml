@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="TextTerminal" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="TextTerminal" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
@@ -8,57 +8,62 @@
     </facet>
     <facet type="android" name="Android">
       <configuration>
-        <option name="SELECTED_BUILD_VARIANT" value="productionVersionDebug" />
-        <option name="ASSEMBLE_TASK_NAME" value="assembleProductionVersionDebug" />
-        <option name="COMPILE_JAVA_TASK_NAME" value="compileProductionVersionDebugSources" />
-        <option name="ASSEMBLE_TEST_TASK_NAME" value="assembleProductionVersionDebugTest" />
-        <option name="SOURCE_GEN_TASK_NAME" value="generateProductionVersionDebugSources" />
-        <option name="TEST_SOURCE_GEN_TASK_NAME" value="generateProductionVersionDebugTestSources" />
+        <option name="SELECTED_BUILD_VARIANT" value="developmentVersionDebug" />
+        <option name="SELECTED_TEST_ARTIFACT" value="_android_test_" />
+        <option name="ASSEMBLE_TASK_NAME" value="assembleDevelopmentVersionDebug" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileDevelopmentVersionDebugSources" />
+        <option name="ASSEMBLE_TEST_TASK_NAME" value="assembleDevelopmentVersionDebugTest" />
+        <option name="COMPILE_JAVA_TEST_TASK_NAME" value="compileDevelopmentVersionDebugTestSources" />
+        <afterSyncTasks>
+          <task>generateDevelopmentVersionDebugSources</task>
+          <task>generateDevelopmentVersionDebugTestSources</task>
+        </afterSyncTasks>
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res;file://$MODULE_DIR$/src/productionVersion/res" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res;file://$MODULE_DIR$/src/developmentVersion/res" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/build/intermediates/classes/productionVersion/debug" />
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/build/intermediates/classes/developmentVersion/debug" />
+    <output-test url="file://$MODULE_DIR$/build/intermediates/classes/test/developmentVersion/debug" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/productionVersion/debug" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/productionVersion/debug" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/productionVersion/debug" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/productionVersion/debug" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/productionVersion/debug" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/generated/productionVersion/debug" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersionDebug/res" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersionDebug/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersionDebug/assets" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersionDebug/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersionDebug/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersionDebug/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersionDebug/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/test/productionVersion/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/test/productionVersion/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/test/productionVersion/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/test/productionVersion/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/test/productionVersion/debug" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/generated/test/productionVersion/debug" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersion/res" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersion/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersion/assets" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersion/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersion/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersion/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/productionVersion/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProductionVersion/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProductionVersion/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProductionVersion/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProductionVersion/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProductionVersion/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProductionVersion/jni" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProductionVersion/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/developmentVersion/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/developmentVersion/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/developmentVersion/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/developmentVersion/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/developmentVersion/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/generated/developmentVersion/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersionDebug/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersionDebug/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersionDebug/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersionDebug/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersionDebug/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersionDebug/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersionDebug/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/test/developmentVersion/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/test/developmentVersion/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/test/developmentVersion/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/test/developmentVersion/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/test/developmentVersion/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/generated/test/developmentVersion/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersion/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersion/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersion/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersion/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersion/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersion/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/developmentVersion/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevelopmentVersion/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevelopmentVersion/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevelopmentVersion/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevelopmentVersion/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevelopmentVersion/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevelopmentVersion/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestDevelopmentVersion/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" type="java-resource" />
@@ -104,12 +109,11 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="library-1.0.26" level="project" />
     <orderEntry type="library" exported="" name="play-services-6.5.87" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
-    <orderEntry type="library" exported="" name="library-1.0.24" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-21.0.3" level="project" />
     <orderEntry type="module" module-name="RestfulAPIConnector" exported="" />
   </component>
 </module>
-
